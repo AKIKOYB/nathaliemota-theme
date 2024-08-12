@@ -16,6 +16,16 @@ Version: 1.0
 	top: 32px; /* on prend en compte le décalage */
 }
 
+/* Modal Header */
+.modal-header {
+    height: 170px;
+    padding: 0px;
+    background-image: url('img/contact_header.svg');
+    background-size: auto; /* Adjust this based on your needs */
+    background-position: top; /* Adjust this based on your needs */
+    background-repeat: no-repeat; /* Adjust this based on your needs */
+}
+  
 /* The Modal (background) */
 .modal {
     display: none; /* Hidden by default */
@@ -32,14 +42,64 @@ Version: 1.0
 
 /* Modal Content/Box */
 .modal-content {
-    background-color: #fefefe;
-    margin: 15% auto; /* 15% from the top and centered */
-    padding: 20px;
-    border: 1px solid #888;
-    width: 80%; /* Could be more or less, depending on screen size */
+    position: relative;
+    background-color: white;
+    margin: 80px auto; 
+    padding: 20px 0px 0px 0px;
+    border: none;
+    width: 597px;
+    height: 769px;
+    border: 5px;
 }
 
-/* The Close Button */
+/* Contact form */
+.wpcf7 {
+    margin: 0 auto;
+    max-width: 263px; 
+    height: 600px;
+    text-align: left; 
+    font-family: Poppins;
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 25px;
+}
+
+.wpcf7 input[type="text"],
+.wpcf7 input[type="email"],
+.wpcf7 textarea {
+    color: #313144; /* Text color */
+    background-color: white; /* Background color */
+    border: 1px solid #B8BBC2; /* Border color */
+    border-radius: 8px; /* Border radius for rounded corners */
+    margin-top: 8px;
+    padding: 10px; /* Padding inside the input */
+    width: 100%; /* Make inputs take the full width of the container */
+    box-sizing: border-box; /* Ensure padding doesn't affect width */
+}
+.wpcf7 label{
+    font-family: Poppins;
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 18px;
+    text-align: left;
+}
+
+.wpcf7 input[type="submit"] {
+    display: inline-block; /* Keeps the button centered */
+    width: 263px;
+    height: 50px;
+    background-color: #D8D8D8;
+    border-radius: 2px;
+    border: none;
+    padding: 8px, 15px, 8px, 15px;
+    gap: 10px; 
+    font-family: Space Mono;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 17.77px;
+}
+
+/* The Close Button 
 .close-btn {
     color: #aaa;
     float: right;
@@ -52,4 +112,4 @@ Version: 1.0
     color: black;
     text-decoration: none;
     cursor: pointer;
-}
+}*/
