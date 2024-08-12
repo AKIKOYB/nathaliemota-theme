@@ -1,4 +1,8 @@
 <?php wp_footer(); ?>
-  <!– Vous pourriez ajouter votre script Google Analytics ici –>
+<footer>
+    <p>TOUS DROITS RÉSERVÉS</p>
+    <?php get_template_part('template-parts/modal', 'contact'); ?>
+    <?php wp_footer(); ?>
+</footer>
 </body>
 </html>
