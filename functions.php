@@ -12,9 +12,10 @@ function nathaliemota_theme_setup() {
     // Add support for the title tag
     add_theme_support('title-tag');
 
-    // Register a primary menu location
+    // Register a primary and footer menu locations
     register_nav_menus(array(
         'primary' => __('Primary Menu', 'nathaliemota-theme'),
+        'footer'  => __('Footer Menu', 'nathaliemota-theme'),
     ));
 }
 add_action('after_setup_theme', 'nathaliemota_theme_setup');
