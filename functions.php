@@ -1,24 +1,32 @@
 <?php
-function custom_theme_setup() {
+function nathaliemota_theme_setup() {
+    // Add support for custom logo
     add_theme_support('custom-logo');
+    
+    // Add support for menus
     add_theme_support('menus');
+
+    // Add support for post thumbnails
     add_theme_support('post-thumbnails');
+
+    // Add support for the title tag
     add_theme_support('title-tag');
 
+    // Register a primary menu location
     register_nav_menus(array(
-        'primary' => __('Primary Menu', 'custom-theme'),
+        'primary' => __('Primary Menu', 'nathaliemota-theme'),
     ));
 }
-add_action('after_setup_theme', 'custom_theme_setup');
+add_action('after_setup_theme', 'nathaliemota_theme_setup');
 
-function custom_enqueue_scripts() {
+function nathaliemota_enqueue_scripts() {
+    // Enqueue the main stylesheet
     wp_enqueue_style('theme-style', get_stylesheet_uri());
-    wp_enqueue_script('theme-scripts', get_template_directory_uri() . '/js/script.js', array('jquery'), null, true);
-}
-add_action('wp_enqueue_scripts', 'custom_enqueue_scripts');
 
-function my_theme_enqueue_styles() {
+    // Enqueue custom scripts with jQuery as a dependency
+    wp_enqueue_script('theme-scripts', get_template_directory_uri() . '/js/script.js', array('jquery'), null, true);
+    
+    // Enqueue Google Fonts
     wp_enqueue_style('google-fonts', 'https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap', false);
 }
-
-add_action('wp_enqueue_scripts', 'my_theme_enqueue_styles');
+add_action('wp_enqueue_scripts', 'nathaliemota_enqueue_scripts');

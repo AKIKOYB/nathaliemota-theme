@@ -7,13 +7,73 @@ Description: Original Theme for Nathalie Mota
 Requires at least: WordPress 5.0
 Version: 1.0
 */
-.menu {
-    position: fixed;
-    top: 0px;
+
+
+body,
+.page {
+  width: 100%;
+  max-width: 1440px;
+  margin: auto;
+  overflow-x: hidden;
+  overflow-y: auto;
+  box-sizing: border-box;
 }
 
-.admin-bar .menu {
-	top: 32px; /* on prend en compte le décalage */
+body > * {
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+/* brought from koukai setting in need 
+img, iframe, video {
+  max-width: 100%;
+  height: auto;
+  box-sizing: border-box;
+}*/
+
+.site-container { 
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1440px;
+    height: 80px;
+    margin-left: 10%;
+    margin-right: 10%;
+    background-color: #FFFF;
+}
+
+.site-logo {
+    flex: 1;
+    top: 31px;
+    left: 146px;
+}
+
+.primary-menu {
+    list-style: none;
+    display: flex;
+    gap: 70px;
+    margin: 0;
+    padding: 0;
+}
+
+.primary-menu li {
+    display: inline;
+}
+
+.primary-menu a {
+    font-family: Space Mono;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 23.7px;
+    text-align: left;
+    text-decoration: none;
+    color: #000000;
 }
 
 /* Modal Header */
@@ -21,9 +81,9 @@ Version: 1.0
     height: 170px;
     padding: 0px;
     background-image: url('img/contact_header.svg');
-    background-size: auto; /* Adjust this based on your needs */
-    background-position: top; /* Adjust this based on your needs */
-    background-repeat: no-repeat; /* Adjust this based on your needs */
+    background-size: auto; 
+    background-position: top; 
+    background-repeat: no-repeat; 
 }
   
 /* The Modal (background) */
@@ -67,12 +127,12 @@ Version: 1.0
 .wpcf7 input[type="text"],
 .wpcf7 input[type="email"],
 .wpcf7 textarea {
-    color: #313144; /* Text color */
-    background-color: white; /* Background color */
-    border: 1px solid #B8BBC2; /* Border color */
-    border-radius: 8px; /* Border radius for rounded corners */
+    color: #313144; 
+    background-color: white; 
+    border: 1px solid #B8BBC2; 
+    border-radius: 8px; 
     margin-top: 8px;
-    padding: 10px; /* Padding inside the input */
+    padding: 10px; 
     width: 100%; /* Make inputs take the full width of the container */
     box-sizing: border-box; /* Ensure padding doesn't affect width */
 }
@@ -99,17 +159,29 @@ Version: 1.0
     line-height: 17.77px;
 }
 
-/* The Close Button 
-.close-btn {
-    color: #aaa;
-    float: right;
-    font-size: 28px;
-    font-weight: bold;
+.site-footer { 
+    background-color: #fff;
+    padding: 20px 0;
+    text-align: center;
+    max-width: 1440px;
+    height: 40px;
+    border-top: 1px solid #000;
 }
 
-.close:hover,
-.close:focus {
-    color: black;
+.footer-links { 
+    display: flex;
+    justify-content: center;
+    max-width: 1440px; 
+    gap: 100px;
+}
+
+.footer-links a {
     text-decoration: none;
-    cursor: pointer;
-}*/
+    font-family: Space Mono;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 23.7px;
+    text-align: center;
+    color: #000;
+}
+

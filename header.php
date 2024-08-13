@@ -6,7 +6,7 @@
     <?php wp_head(); ?>
 </head>
 
-<body class= "home blog logged-in admin-bar no-customize-support">
+<body <?php body_class(); ?>>
     <?php wp_body_open(); ?>
 
     <header class = "header" >
@@ -20,6 +20,7 @@
             wp_nav_menu(array(
                 'theme_location' => 'primary',
                 'menu_class'     => 'primary-menu',
+                'container'      => false,
             ));
             ?>
         </nav>
