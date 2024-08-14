@@ -31,3 +31,6 @@ function nathaliemota_enqueue_scripts() {
     wp_enqueue_style('google-fonts', 'https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap', false);
 }
 add_action('wp_enqueue_scripts', 'nathaliemota_enqueue_scripts');
+
+// photo size for related-photos.php
+add_image_size('large-photo', 564, 495, true); // 564px by 495px with cropping
