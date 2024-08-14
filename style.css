@@ -24,13 +24,6 @@ body > * {
   box-sizing: border-box;
 }
 
-/* brought from koukai setting in need 
-img, iframe, video {
-  max-width: 100%;
-  height: auto;
-  box-sizing: border-box;
-}*/
-
 .site-container { 
     max-width: 1440px;
     margin: 0 auto;
@@ -100,7 +93,7 @@ p {
 .primary-menu {
     list-style: none;
     display: flex;
-    gap: 70px;
+    gap: 5vw; /*70px*/
     margin: 0;
     padding: 0;
 }
@@ -147,7 +140,7 @@ p {
 .modal-content {
     position: relative;
     background-color: white;
-    margin: 80px auto; 
+    margin: 10vh auto; /*80px */
     padding: 20px 0px 0px 0px;
     border: none;
     width: 597px;
@@ -219,7 +212,7 @@ p {
     display: flex;
     justify-content: center;
     max-width: 1440px; 
-    gap: 100px;
+    gap: 5vw; /*100px*/
     list-style: none; 
     padding: 0px;
 }
