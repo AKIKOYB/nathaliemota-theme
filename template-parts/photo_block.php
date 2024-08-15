@@ -1,6 +1,6 @@
 <?php
 /**
- * Template part for displaying a single photo
+ * Template part for displaying a list of photos
  *
  * @package Nathaliemota_Theme
  */
