@@ -74,9 +74,11 @@ wp_reset_postdata();
         ?>
     </div>
 </div>
-<div class='plus-section'>
+
+<div class="plus-section">
     <button id="plus">Charger plus</button>
 </div>
 
 <?php
 get_footer();
+?>

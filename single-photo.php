@@ -73,15 +73,14 @@
 
                 <div class="nav-arrows">
                     <?php
-                    // Get previous post
+                    // arrow for  previous post
                     $prev_post = get_previous_post();
                     if ($prev_post) : ?>
                         <a href="<?php echo get_permalink($prev_post->ID); ?>" class="prev-arrow">
                             <span>←</span>
                         </a>
                     <?php endif; ?>
-
-                    <a href="<?php echo get_permalink($next_post->ID); ?>" class="next-arrow">
+                        <a href="<?php echo get_permalink($next_post->ID); ?>" class="next-arrow">
                         <span>→</span>
                     </a>
                 </div>

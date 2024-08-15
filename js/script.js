@@ -1,8 +1,8 @@
 jQuery(document).ready(function($) {
-    // Get the modal
+    // Get the modal contact form
     var modal = $('#contact-modal');
-    // Get the button in the primary menu that opens the modal
-    var primaryMenuBtn = $('.contact-menu-item a');  //var btn = $('.contact-menu-item a');  old version which worked
+    // Get the button in the primary menu to open the modal
+    var primaryMenuBtn = $('.contact-menu-item a');  //var btn = $('.contact-menu-item a');  old version which worked well
     // Get the button inside contact-section that opens the modal
     var contactSectionBtn = $('.contact-section button');
     

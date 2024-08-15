@@ -112,6 +112,7 @@ p {
     color: #000000;
 }
 /*front page.php*/
+/*HERO section*/
 .hero-section {
     position: relative;
     width: 100%;
@@ -138,9 +139,8 @@ p {
     -webkit-text-stroke: 3px rgba(255, 255, 255, 1);
 }
 
-/*filters*/
-
-.filters{
+/* filters */
+.filters {
     max-width: 100%;
     box-sizing: border-box;
     margin-bottom: 50px;
@@ -154,30 +154,27 @@ p {
 #filter-date {
     width: 260px;
     height: 42px;
-    padding: 11px 18px 11px 18px;
-    gap: 0px;
-    border-radius: 8px 0px 0px 0px;
-    border: 1.3px 0px 0px 0px;
-    justify: space-between;
-    opacity: 0px;
+    padding: 11px 18px;
+    border-radius: 8px;
+    border: 1.3px solid;
 }
+
 .plus-section {
-    text-align: center; /* Center the button horizontally */
+    text-align: center;
     margin: 50px 0; 
 }
+
 #plus {
     width: 272px;
     height: 50px;
-    padding: 8px 15px 8px 15px;
-    gap: 10px;
-    border-radius: 2px 0px 0px 0px;
+    padding: 8px 15px;
+    border-radius: 2px;
     border: none;
-    opacity: 0px;
     background-color: rgba(216, 216, 216, 1);
     font-family: Space Mono;
     font-size: 12px;
     font-weight: 400;
-    line-height: 17.77px;
+    cursor: pointer;
 }
 
 /* Modal Header */
@@ -200,8 +197,7 @@ p {
     width: 100%; /* Full width */
     height: 100%; /* Full height */
     overflow: auto; /* Enable scroll if needed */
-    background-color: rgb(0,0,0); /* Fallback color */
-    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    background-color: rgba(0,0,0,0.4); 
 }
 
 /* Modal Content/Box */
@@ -237,8 +233,8 @@ p {
     border-radius: 8px; 
     margin-top: 8px;
     padding: 10px; 
-    width: 100%; /* Make inputs take the full width of the container */
-    box-sizing: border-box; /* Ensure padding doesn't affect width */
+    width: 100%; 
+    box-sizing: border-box; 
 }
 .wpcf7 label{
     font-family: Poppins;
@@ -417,26 +413,101 @@ p {
 }
 
 .photo-block img {
-    width: 100%; 
-    /*height: auto;*/ /*dont know how to make Width564pxHeight495px*/  
-    object-fit: cover; 
+    width: 100%;
+    height: 100%;
+    object-fit: cover;  
+    aspect-ratio: 1 / 1; 
+    object-position: center; 
 }
 
 /*photo-block.php*/
+/* Photo gallery styles */
 .photo-gallery {
     display: grid;
-    grid-template-columns: repeat(2, 1fr); /* 4 columns */
-    gap: 20px; /* Adjust the space between photos */
+    grid-template-columns: repeat(2, 1fr); 
+    gap: 20px; 
 }
 
 .photo-item {
+    position: relative; 
     width: 100%;
-    aspect-ratio: 1/1; /* Ensures a square ratio */
+    aspect-ratio: 1/1; 
     overflow: hidden;
 }
 
 .photo-item img {
     width: 100%;
     height: 100%;
-    object-fit: cover; /* Ensures the image covers the square without distortion */
+    object-fit: cover;  
+    aspect-ratio: 1 / 1; 
+    object-position: center; 
+}
+
+.photo-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.photo-item:hover .photo-overlay {
+    opacity: 1;
+}
+
+.photo-icons {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+.info-icon {
+    background-image: url('img/Icon_eye.png'); 
+    width: 24px; 
+    height: 24px; 
+    position: absolute;
+    background-size: cover;
+    background-repeat: no-repeat;
+    padding: 0px;
+    top: 50%;  
+    left: 50%;  
+    transform: translate(-50%, -50%);  
+}
+
+.fullscreen-icon {
+    background-image: url('img/Icon_fullscreen.png'); 
+    width: 24px; 
+    height: 24px; 
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-size: cover;
+    background-repeat: no-repeat;
+    padding: 15px;
+}
+.photo-details {
+    position: absolute;
+    bottom: 0;
+    width: 90%;
+    display: flex;
+    justify-content: space-between;
+    padding: 15px
+}
+
+.photo-title,
+.photo-category {
+    margin: 0;
+    color: white;
+    font-family: Poppins;
+    font-size: 14px;
+    font-weight: 500;
 }
