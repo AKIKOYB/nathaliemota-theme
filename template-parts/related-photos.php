@@ -22,7 +22,7 @@
             while ($related_photos->have_posts()) : $related_photos->the_post(); ?>
                 <div class="photo-block">
                     <a href="<?php the_permalink(); ?>">
-                    <?php the_post_thumbnail('large-photo'); ?> <!-- Use custom image size on function.php-->
+                    <?php the_post_thumbnail('large-photo'); ?> 
                     </a>
                 </div>
             <?php endwhile;
