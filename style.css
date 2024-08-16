@@ -73,6 +73,7 @@ p {
     text-align: left;
 }
 
+/*header.php*/
 .header {
     display: flex;
     justify-content: space-between;
@@ -177,17 +178,10 @@ p {
     cursor: pointer;
 }
 
-/* Modal Header */
-.modal-header {
-    height: 170px;
-    padding: 0px;
-    background-image: url('img/contact_header.svg');
-    background-size: auto; 
-    background-position: top; 
-    background-repeat: no-repeat; 
-}
+/*modal-contact.php*/
+
   
-/* The Modal (background) */
+/* Modal pop up*/
 .modal {
     display: none; /* Hidden by default */
     position: fixed; /* Stay in place */
@@ -199,8 +193,16 @@ p {
     overflow: auto; /* Enable scroll if needed */
     background-color: rgba(0,0,0,0.4); 
 }
-
-/* Modal Content/Box */
+/* Modal Header part with img*/
+.modal-header {
+    height: 170px;
+    padding: 0px;
+    background-image: url('img/contact_header.svg');
+    background-size: auto; 
+    background-position: top; 
+    background-repeat: no-repeat; 
+}
+/* Modal Content part with form */
 .modal-content {
     position: relative;
     background-color: white;
@@ -258,7 +260,7 @@ p {
     font-weight: 400;
     line-height: 17.77px;
 }
-
+/*footer.php*/
 .site-footer { 
     background-color: #fff;
     text-align: center;
@@ -296,6 +298,7 @@ p {
 }
 
 /*single-photo page*/
+/*Page infos d’une photo*/
 
 .photo-page-wrapper {
     display: flex;
@@ -328,7 +331,7 @@ p {
     object-fit: contain; /* image fits without cropping */
 }
 
-/* Interaction block */
+/* Interaction block with contact btn and miniature photo, arrows */
 .photo-interactions {
     display: flex;
     justify-content: space-between;
@@ -350,6 +353,9 @@ p {
 }
 
 .contact-section p {
+    font-family: Poppins;
+    font-size: 14px;
+    font-weight: 300;
     margin: 0px; 
 }
 

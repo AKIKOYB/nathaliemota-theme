@@ -27,8 +27,6 @@ function nathaliemota_enqueue_scripts() {
     // Enqueue custom scripts with jQuery as a dependency
     wp_enqueue_script('theme-scripts', get_template_directory_uri() . '/js/script.js', array('jquery'), null, true);
     
-    // Enqueue Google Fonts
-    wp_enqueue_style('google-fonts', 'https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap', false);
 }
 add_action('wp_enqueue_scripts', 'nathaliemota_enqueue_scripts');
 
