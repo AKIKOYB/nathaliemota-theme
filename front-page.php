@@ -38,19 +38,35 @@ wp_reset_postdata();
     </div>
 </div>
 
+<!-- Filters -->
 <div class="filters">
     <select id="filter-category">
         <option value="">CATÉGORIES</option>
+        <?php
+        $categories = get_terms('categorie');
+        foreach ($categories as $category) {
+            echo '<option value="' . esc_attr($category->slug) . '">' . esc_html($category->name) . '</option>';
+        }
+        ?>
     </select>
 
     <select id="filter-format">
         <option value="">FORMATS</option>
+        <?php
+        $formats = get_terms('format'); 
+        foreach ($formats as $format) {
+            echo '<option value="' . esc_attr($format->slug) . '">' . esc_html($format->name) . '</option>';
+        }
+        ?>
     </select>
 
     <select id="filter-date">
         <option value="desc">TRIER PAR</option>
+        <option value="desc">PLUS RÉCENTES</option>
+        <option value="asc">PLUS ANCIENNES</option>
     </select>
 </div>
+
 
 <div class="homepage-content">
     <div class="photo-gallery">
@@ -76,7 +92,7 @@ wp_reset_postdata();
 </div>
 
 <div class="plus-section">
-    <button id="plus">Charger plus</button>
+    <button id="plus" data-page="1">Charger plus</button>
 </div>
 
 <?php

@@ -17,7 +17,17 @@ $photo_category = get_the_terms(get_the_ID(), 'categorie');
                     <div class="photo-icons">
                         <a href="<?php the_permalink(); ?>" class="info-icon" title="Voir les détails">
                         </a>
-                        <a href="<?php echo esc_url(get_the_post_thumbnail_url(get_the_ID(), 'full')); ?>" class="fullscreen-icon" title="Plein écran">
+                        <a href="<?php echo esc_url(get_the_post_thumbnail_url(get_the_ID(), 'full')); ?>" 
+                           class="fullscreen-icon" data-ref-number="<?php echo esc_html(get_post_meta(get_the_ID(), 'reference', true)); ?>" 
+                            data-category="
+                            <?php
+                                if ($photo_category && !is_wp_error($photo_category)) {
+                                    foreach ($photo_category as $category) {
+                                        echo esc_html($category->name);
+                                    }
+                                }
+                            ?>
+                            " title="Plein écran">
                         </a>
                     </div>
                     <div class="photo-details">

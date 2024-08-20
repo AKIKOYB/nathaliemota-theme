@@ -478,8 +478,8 @@ p {
 
 .info-icon {
     background-image: url('img/Icon_eye.png'); 
-    width: 24px; 
-    height: 24px; 
+    width: 48px;
+    height: 33px;
     position: absolute;
     background-size: cover;
     background-repeat: no-repeat;
@@ -499,6 +499,7 @@ p {
     background-size: cover;
     background-repeat: no-repeat;
     padding: 15px;
+    margin: 15px;
 }
 .photo-details {
     position: absolute;
@@ -517,3 +518,98 @@ p {
     font-size: 14px;
     font-weight: 500;
 }
+
+/* Lightbox */
+/* Lightbox Overlay */
+.lightbox-overlay {
+    display: none; /* Hidden by default */
+    position: fixed;
+    z-index: 9999;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8); /* 80% transparent black */
+}
+
+/* Lightbox Content */
+.lightbox-content {
+    position: relative;
+    width: 90%; 
+    height: 90%; 
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+    margin: auto;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+/* Lightbox Image */
+#lightbox-image {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain; 
+    display: block; 
+    margin: auto;
+}
+
+/* Lightbox Info */
+.lightbox-info {
+    margin-top: 15px;
+    color: white;
+    text-align: center;
+    font-size: 18px;
+}
+
+.lightbox-ref-number {
+    margin: 0;
+    font-weight: bold;
+    color: white;
+}
+
+.lightbox-category {
+    margin: 0;
+    font-weight: bold;
+    color: white;
+}
+
+/* Close Button */
+.lightbox-close {
+    position: absolute;
+    top: 55px;
+    right: 5%;
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+}
+/* Navigation Buttons */
+.lightbox-prev, .lightbox-next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-family: Space Mono;
+    font-size: 12px;
+    font-weight: 400;
+    cursor: pointer;
+    z-index: 10000; 
+}
+
+.lightbox-prev {
+    left: 10px; 
+    color: white;
+    background: none;
+    border: none;
+}
+
+.lightbox-next {
+    right: 10px;
+    color: white;
+    background: none;
+    border: none;
+}
+
+
+

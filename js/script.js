@@ -47,3 +47,119 @@ jQuery(document).ready(function($) {
         }
     });
 });
+
+//for AJAX Request
+jQuery(document).ready(function($) {
+    $('#plus').on('click', function() {
+        var button = $(this);
+        var page = button.data('page');
+        var nextPage = page + 1;
+
+        $.ajax({
+            url: nathaliemota_ajax.ajax_url,
+            type: 'post',
+            data: {
+                action: 'load_more_photos',
+                page: nextPage
+            },
+            beforeSend: function() {
+                button.text('Loading...'); // Change button text while loading
+            },
+            success: function(response) {
+                if (response) {
+                    $('.photo-gallery').append(response); // Append new photos
+                    button.data('page', nextPage);
+                    button.text('Charger plus'); // Reset button text
+                } else {
+                    button.text('No more photos'); // Change text if no more photos
+                    button.prop('disabled', true);
+                }
+            }
+        });
+    });
+});
+
+//handle the filter and sort changes
+jQuery(document).ready(function($) {
+    function loadPhotos(page, append = true) {
+        var category = $('#filter-category').val();
+        var format = $('#filter-format').val();
+        var order = $('#filter-date').val();
+
+        $.ajax({
+            url: nathaliemota_ajax.ajax_url,
+            type: 'post',
+            data: {
+                action: 'load_more_photos',
+                page: page,
+                category: category,
+                format: format,
+                order: order,
+            },
+            beforeSend: function() {
+                $('#plus').text('Loading...'); // Change button text while loading
+            },
+            success: function(response) {
+                if (response) {
+                    if (append) {
+                        $('.photo-gallery').append(response); // Append new photos
+                    } else {
+                        $('.photo-gallery').html(response); // Replace photos
+                    }
+                    $('#plus').data('page', page);
+                    $('#plus').text('Charger plus'); // Reset button text
+                } else {
+                    $('#plus').text('No more photos');
+                    $('#plus').prop('disabled', true);
+                }
+            }
+        });
+    }
+
+    $('#plus').on('click', function() {
+        var button = $(this);
+        var page = button.data('page') + 1;
+        loadPhotos(page);
+    });
+
+    $('#filter-category, #filter-format, #filter-date').on('change', function() {
+        loadPhotos(1, false); // Reset to page 1 and replace photos
+    });
+});
+
+
+// lightbox.js
+jQuery(document).ready(function($) {
+    // Open lightbox
+    $('.fullscreen-icon').on('click', function(event) {
+        event.preventDefault();
+        
+        // Get image URL, reference number, and category
+        let imageUrl = $(this).attr('href');
+        let refNumber = $(this).data('reference');
+        let category = $(this).data('categorie');
+        
+        // Set lightbox content
+        $('#lightbox-image').attr('src', imageUrl);
+        $('#lightbox-ref-number').text(refNumber);
+        $('#lightbox-category').text(category);
+        
+        // Show lightbox
+        $('#lightbox-overlay').addClass('active');
+    });
+
+    // Close lightbox
+    $('#lightbox-close').on('click', function() {
+        $('#lightbox-overlay').removeClass('active');
+    });
+
+    // Previous and Next functionality (implement logic as needed)
+    $('#lightbox-prev').on('click', function() {
+        // Logic to show previous image
+    });
+
+    $('#lightbox-next').on('click', function() {
+        // Logic to show next image
+    });
+});
+
