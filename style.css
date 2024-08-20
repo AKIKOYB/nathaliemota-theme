@@ -557,23 +557,33 @@ p {
 
 /* Lightbox Info */
 .lightbox-info {
-    margin-top: 15px;
+    display: flex;
+    justify-content: space-between;
+    width: 60%;
+    padding: 0 px;
+    position: absolute;
+    bottom: -20px;
+    font-family: Space Mono, monospace;
+    font-size: 14px;
+    font-weight: 400;
     color: white;
-    text-align: center;
-    font-size: 18px;
+}
+
+.lightbox-ref-number,
+.lightbox-category {
+    margin: 0;
+    background: none;
+    border: none;
 }
 
 .lightbox-ref-number {
-    margin: 0;
-    font-weight: bold;
-    color: white;
+    text-align: left;
 }
 
 .lightbox-category {
-    margin: 0;
-    font-weight: bold;
-    color: white;
+    text-align: right;
 }
+
 
 /* Close Button */
 .lightbox-close {

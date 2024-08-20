@@ -6,9 +6,10 @@
  */
 $photo_title = get_the_title();
 $photo_category = get_the_terms(get_the_ID(), 'categorie'); 
+$photo_reference = get_post_meta(get_the_ID(), 'reference', true);
 ?>
 
-<div class="photo-item">
+<div class="photo-item" data-reference="<?php echo esc_attr($photo_reference); ?>" data-category="<?php echo esc_attr($photo_category[0]->name); ?>">
     <?php if (has_post_thumbnail()) : ?>
         <div class="photo-image">
             <a href="<?php the_permalink(); ?>" class="photo-link">

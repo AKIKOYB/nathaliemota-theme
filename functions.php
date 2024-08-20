@@ -44,14 +44,37 @@ add_action('wp_enqueue_scripts', 'nathaliemota_enqueue_scripts');
 add_image_size('large-photo', 564, 495, true); // 564px by 495px with cropping
 
 // AJAX handler for loading more photos
-function load_more_photos() {
-    $paged = isset($_POST['page']) ? intval($_POST['page']) : 1;
+// functions.php
+
+function load_more_photos_ajax() {
+    $page = isset($_POST['page']) ? intval($_POST['page']) : 1;
+    $category = isset($_POST['category']) ? sanitize_text_field($_POST['category']) : '';
+    $format = isset($_POST['format']) ? sanitize_text_field($_POST['format']) : '';
+    $order = isset($_POST['order']) ? sanitize_text_field($_POST['order']) : 'desc';
 
     $args = array(
-        'post_type'      => 'photo',
+        'post_type' => 'photo',
         'posts_per_page' => 8,
-        'paged'          => $paged,
+        'paged' => $page,
+        'orderby' => 'date',
+        'order' => $order,
     );
+
+    if (!empty($category)) {
+        $args['tax_query'][] = array(
+            'taxonomy' => 'categorie',
+            'field'    => 'slug',
+            'terms'    => $category,
+        );
+    }
+
+    if (!empty($format)) {
+        $args['tax_query'][] = array(
+            'taxonomy' => 'format',
+            'field'    => 'slug',
+            'terms'    => $format,
+        );
+    }
 
     $photo_query = new WP_Query($args);
 
@@ -61,11 +84,11 @@ function load_more_photos() {
         endwhile;
         wp_reset_postdata();
     else :
-        echo '<p>No more photos found.</p>';
+        echo '<p>No photos found.</p>';
     endif;
 
-    wp_die(); // Stop the script
+    wp_die();
 }
 
-add_action('wp_ajax_load_more_photos', 'load_more_photos');
-add_action('wp_ajax_nopriv_load_more_photos', 'load_more_photos');
+add_action('wp_ajax_load_more_photos', 'load_more_photos_ajax');
+add_action('wp_ajax_nopriv_load_more_photos', 'load_more_photos_ajax');

@@ -12,7 +12,7 @@
 <?php get_template_part('template-parts/modal', 'contact'); ?>
 </footer>
 <!-- Lightbox Structure -->
-    <div id="lightbox-overlay" class="lightbox-overlay">
+    <div id="lightbox-overlay" class="lightbox-overlay" style="display: none;">
         <div id="lightbox-content" class="lightbox-content">
             <button id="lightbox-close" class="lightbox-close">✖</button>
             <button id="lightbox-prev" class="lightbox-prev">← Précédente</button>
