@@ -5,46 +5,62 @@
  * @link https://developer.wordpress.org/themes/basics/template-hierarchy/#single-post
  *
  * @package WordPress
- * @subpackage Twenty_Twenty_One
- * @since Twenty Twenty-One 1.0
+ 
  */
+ get_header(); ?>
 
-get_header();
+<div id="primary" class="content-area">
+    <main id="main" class="site-main">
 
-/* Start the Loop */
-while ( have_posts() ) :
-	the_post();
+        <?php
+        // Start the Loop.
+        while ( have_posts() ) :
+            the_post();
+        ?>
 
-	get_template_part( 'template-parts/content/content-single' );
+            <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+                <header class="entry-header">
+                    <?php
+                    if ( is_singular() ) :
+                        the_title( '<h2 class="entry-title">', '</h2>' );
+                    else :
+                        the_title( '<h2 class="entry-title"><a href="' . esc_url( get_permalink() ) . '" rel="bookmark">', '</a></h2>' );
+                    endif;
+                    ?>
+                </header><!-- .entry-header -->
 
-	if ( is_attachment() ) {
-		// Parent post navigation.
-		the_post_navigation(
-			array(
-				/* translators: %s: Parent post link. */
-				'prev_text' => sprintf( __( '<span class="meta-nav">Published in</span><span class="post-title">%s</span>', 'twentytwentyone' ), '%title' ),
-			)
-		);
-	}
+                <div class="entry-content">
+                    <?php
+                    the_content();
 
-	// If comments are open or there is at least one comment, load up the comment template.
-	if ( comments_open() || get_comments_number() ) {
-		comments_template();
-	}
+                    wp_link_pages(
+                        array(
+                            'before' => '<div class="page-links">' . esc_html__( 'Pages:', 'textdomain' ),
+                            'after'  => '</div>',
+                        )
+                    );
+                    ?>
+                </div><!-- .entry-content -->
 
-	// Previous/next post navigation.
-	$twentytwentyone_next = is_rtl() ? twenty_twenty_one_get_icon_svg( 'ui', 'arrow_left' ) : twenty_twenty_one_get_icon_svg( 'ui', 'arrow_right' );
-	$twentytwentyone_prev = is_rtl() ? twenty_twenty_one_get_icon_svg( 'ui', 'arrow_right' ) : twenty_twenty_one_get_icon_svg( 'ui', 'arrow_left' );
+                <footer class="entry-footer">
+                    <?php
+                    // Display post categories and tags
+                    the_category(', ');
+                    the_tags('<span class="tags-links">', ', ', '</span>');
+                    ?>
+                </footer><!-- .entry-footer -->
+            </article><!-- #post-<?php the_ID(); ?> -->
 
-	$twentytwentyone_next_label     = esc_html__( 'Next post', 'twentytwentyone' );
-	$twentytwentyone_previous_label = esc_html__( 'Previous post', 'twentytwentyone' );
+            <?php
+            // If comments are open or there are comments, load up the comment template.
+            if ( comments_open() || get_comments_number() ) :
+                comments_template();
+            endif;
 
-	the_post_navigation(
-		array(
-			'next_text' => '<p class="meta-nav">' . $twentytwentyone_next_label . $twentytwentyone_next . '</p><p class="post-title">%title</p>',
-			'prev_text' => '<p class="meta-nav">' . $twentytwentyone_prev . $twentytwentyone_previous_label . '</p><p class="post-title">%title</p>',
-		)
-	);
-endwhile; // End of the loop.
+        endwhile; // End the loop.
+        ?>
 
-get_footer();
+    </main><!-- #main -->
+</div><!-- #primary -->
+
+<?php get_footer(); ?>

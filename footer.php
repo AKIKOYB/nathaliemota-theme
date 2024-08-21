@@ -1,4 +1,3 @@
-<?php wp_footer(); ?>
 <footer class="site-footer">
     <nav class="footer-nav">
         <?php
@@ -6,6 +5,7 @@
             'theme_location' => 'footer',
             'menu_class'     => 'footer-menu',
             'container'      => false,
+            'fallback_cb'    => 'wp_page_menu', // Optional fallback
         ));
         ?>
     </nav>
@@ -24,5 +24,6 @@
             <button id="lightbox-next" class="lightbox-next">Suivante →</button>
         </div>
     </div>
+    <?php wp_footer(); ?>
 </body>
 </html>

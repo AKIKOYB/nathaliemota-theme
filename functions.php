@@ -25,10 +25,10 @@ function nathaliemota_enqueue_scripts() {
     wp_enqueue_style('theme-style', get_stylesheet_uri());
 
     // Enqueue custom scripts with jQuery as a dependency
-    wp_enqueue_script('theme-scripts', get_template_directory_uri() . '/js/script.js', array('jquery'), null, true);
+    //wp_enqueue_script('theme-scripts', get_template_directory_uri() . '/js/script.js', array('jquery'), null, true);
 
     // Enqueue AJAX script and provide the AJAX URL
-    wp_enqueue_script('nathaliemota-ajax', get_template_directory_uri() . '/js/scripts.js', array('jquery'), null, true);
+    wp_enqueue_script('nathaliemota-ajax', get_template_directory_uri() . '/js/script.js', array('jquery'), null, true);
     
     // Localize script to pass AJAX URL
     wp_localize_script('nathaliemota-ajax', 'nathaliemota_ajax', array(

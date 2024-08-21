@@ -15,7 +15,7 @@
     <header class = "header" >
         <div class="site-logo">
             <a href="<?php echo home_url('/'); ?>">
-            <img src="<?php echo get_template_directory_uri(); ?> /img/logo.svg" alt="Logo">
+            <img src="<?php echo get_template_directory_uri(); ?>/img/logo.svg" alt="Logo">
             </a>​​  
         </div>
         <nav>
@@ -24,6 +24,7 @@
                 'theme_location' => 'primary',
                 'menu_class'     => 'primary-menu',
                 'container'      => false,
+                'fallback_cb'    => false, //debuging
             ));
             ?>
         </nav>
