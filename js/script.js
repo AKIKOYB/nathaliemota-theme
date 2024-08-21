@@ -1,3 +1,18 @@
+//toggle menu
+document.addEventListener('DOMContentLoaded', function() {
+    const menuToggle = document.querySelector('.menu-toggle');
+    const mobileMenu = document.querySelector('.mobile-menu');
+    const closeMenu = document.querySelector('.close-menu');
+
+    menuToggle.addEventListener('click', function() {
+        mobileMenu.classList.add('open');
+    });
+
+    closeMenu.addEventListener('click', function() {
+        mobileMenu.classList.remove('open');
+    });
+});
+
 jQuery(document).ready(function($) {
     // Get the modal contact form
     var modal = $('#contact-modal');

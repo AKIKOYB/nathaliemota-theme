@@ -18,13 +18,33 @@
             <img src="<?php echo get_template_directory_uri(); ?>/img/logo.svg" alt="Logo">
             </a>​​  
         </div>
-        <nav>
+        
+         <!-- Desktop Menu -->
+         <nav class="desktop-menu">
             <?php
             wp_nav_menu(array(
                 'theme_location' => 'primary',
                 'menu_class'     => 'primary-menu',
                 'container'      => false,
-                'fallback_cb'    => false, //debuging
+                'fallback_cb'    => false,
+            ));
+            ?>
+        </nav>
+
+        <!-- Mobile Menu Toggle -->
+        <div class="menu-toggle" aria-controls="primary-menu" aria-expanded="false">
+            <span class="menu-icon">&#9776;</span> <!-- Burger icon -->
+        </div>
+
+        <!-- Mobile Menu -->
+        <nav id="primary-menu" class="mobile-menu">
+            <button class="close-menu" aria-label="Close Menu">&times;</button>
+            <?php
+            wp_nav_menu(array(
+                'theme_location' => 'primary',
+                'menu_class'     => 'menu-items',
+                'container'      => false,
+                'fallback_cb'    => false,
             ));
             ?>
         </nav>
