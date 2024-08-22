@@ -74,32 +74,42 @@ p {
 }
 
 /*header.php*/
+/* Header Styles for Both Desktop and Mobile */
 .header {
     display: flex;
     justify-content: space-between;
     align-items: center;
     max-width: 1440px;
     height: 80px;
-    margin-left: 10%;
-    margin-right: 10%;
+    margin-left: 7%;
+    margin-right: 5%;
     background-color: #FFFF;
-    position: relative; /* For positioning mobile menu */
+    position: relative;
+    /*z-index: 1001;  Ensure it stays above the mobile menu */
 }
 
 .site-logo {
     flex: 1;
-    top: 31px;
-    left: 146px;
+    display: flex;
+    align-items: center;
+    max-width: 216px; /* Set a max width for the logo */
+}
+
+.site-logo img {
+    width: 100%; /* Allow the image to scale within the parent container */
+    height: auto; /* Maintain the aspect ratio */
+    max-width: 100%; /* Ensure it doesn't exceed the container's width */
 }
 
 .desktop-menu {
     display: flex;
     align-items: center;
 }
+
 .primary-menu {
     list-style: none;
     display: flex;
-    gap: 5vw; /*70px*/
+    gap: 5vw; /* 70px */
     margin: 0;
     padding: 0;
 }
@@ -122,6 +132,7 @@ p {
 .menu-toggle {
     display: none; /* Hidden by default */
     cursor: pointer;
+    font-size: 25px;
 }
 
 .mobile-menu {
@@ -134,13 +145,11 @@ p {
     background: rgba(224, 0, 0, 1);
     z-index: 1000;
     overflow: auto;
-    padding: 20px;
     box-sizing: border-box;
     transform: translateX(100%); /* Hidden off-screen */
     transition: transform 0.3s ease-in-out;
-    display: flex;
-    justify-content: center; /* Horizontally center content */
-    align-items: center; /* Vertically center content */
+    justify-content: center;
+    align-items: center;
 }
 
 .mobile-menu.open {
@@ -148,29 +157,13 @@ p {
     transform: translateX(0); /* Slide into view */
 }
 
-.header mobile {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    background: #fff;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-    z-index: 1001; /* Above the rest of the menu content */
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0 1rem;
-    box-sizing: border-box;
-}
-
 .menu-items {
     list-style: none;
     padding: 0;
-    margin: 0;
-    flex-direction: column; /* Stack items vertically */
-    align-items: center; /* Center items horizontally */
-    margin-top: 80px; /* Adjust based on the height of the menu bar */
-    overflow-y: auto; /* Allow scrolling for menu items */
+    margin-top: 80px; /* Creates space for the header */
+    flex-direction: column;
+    align-items: center;
+    overflow-y: auto;
 }
 
 .menu-items li {
@@ -190,11 +183,12 @@ p {
 .close-menu {
     background: none;
     border: none;
-    font-size: 2rem;
+    font-size: 25px;
     cursor: pointer;
     position: absolute;
     top: 1rem;
     right: 1rem;
+    z-index: 1002;
 }
 
 /* Responsive Styles */
@@ -205,6 +199,26 @@ p {
 
     .menu-toggle {
         display: block; /* Show burger icon on mobile */
+    }
+
+    .mobile-menu.open .header { /*doesnt ditect as style*/
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        background-color: #FFFF;
+        z-index: 1000;
+        height: 80px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 20px;
+    }
+
+    .close-menu {
+        top: 3rem; /* Position close button at the top */
+        right: 2rem; /* Align close button to the right */
+        z-index: 1002; /* Ensure it's above the menu */
     }
 }
 
@@ -219,7 +233,7 @@ p {
 .hero-section {
     position: relative;
     width: 100%;
-    height: 962px; 
+    height:  962px; 
     max-width: 1440px; 
     margin: 0 auto; 
     background-size: cover;
@@ -237,17 +251,52 @@ p {
     font-style: italic;
     font-weight: 700;
     line-height: 142.18px;
-    text-align: left;
     color: transparent; 
     -webkit-text-stroke: 3px rgba(255, 255, 255, 1);
 }
+@media (min-width: 376px) and (max-width: 768px) {
+    .hero-section {
+        width: 100%;  /* Make the section width 100% of the viewport */
+        height: auto;  /* Allow the height to adjust automatically */
+        padding: 20px; /* Add padding to ensure content is not too close to the edges */
+        display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    }
 
+    .hero-content h1 {
+        font-size: 48px; /* Adjust font size for medium-sized screens */
+        line-height: 72px; /* Adjust line height */
+        -webkit-text-stroke: 2px rgba(255, 255, 255, 1); /* Adjust text stroke */
+    }
+}
+@media (max-width: 375px) {
+    .hero-section {
+        width: 375px;  /* Set the width to 375px */
+        height: 250.33px;  /* Set the height to 250.33px */
+        margin-bottom: 50px; /* Adjust the margin-bottom if needed */
+        display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    }
+
+    .hero-content h1 {
+        font-size: 27.6px; /* Scale down the font size */
+        line-height: 36px; /* Adjust the line height */
+        -webkit-text-stroke: 1px rgba(255, 255, 255, 1); /* Adjust text stroke */
+        text-align: center; /* Center the text on smaller screens */
+    }
+}
 /* filters */
 .filters {
     max-width: 100%;
     box-sizing: border-box;
     margin-bottom: 50px;
     display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
     justify-content: space-between;
     align-items: center;
 }
@@ -255,11 +304,38 @@ p {
 #filter-category,
 #filter-format,
 #filter-date {
-    width: 260px;
+    width: 100%; /* Full width for smaller screens */
+    max-width: 300px; /* Max width to avoid too large filters */
     height: 42px;
     padding: 11px 18px;
     border-radius: 8px;
     border: 1.3px solid;
+    margin-bottom: 10px; /* Spacing between filters */
+}
+
+select {
+    background-color: white;
+    color: black;
+}
+
+select option {
+    background-color: white;
+    color: black;
+}
+select option:hover {
+    background-color: pink;
+    color: white;
+}
+select option:checked {
+    background-color: red;
+    color: white;
+}
+
+
+@media (max-width: 375px) {
+    .filters {
+        justify-content: center;
+    }
 }
 
 .plus-section {
@@ -280,14 +356,12 @@ p {
     cursor: pointer;
 }
 
-/*modal-contact.php*/
-
-  
+/*modal-contact.php*/ 
 /* Modal pop up*/
 .modal {
     display: none; /* Hidden by default */
     position: fixed; /* Stay in place */
-    z-index: 1; /* Sit on top */
+    z-index: 1000; /* Sit on top */
     left: 0;
     top: 0;
     width: 100%; /* Full width */
@@ -362,6 +436,44 @@ p {
     font-weight: 400;
     line-height: 17.77px;
 }
+
+/* Mobile Devices (375px width) */
+@media (max-width: 375px) {
+    .modal-content {
+        width: 90%; /* Use a percentage width to make the modal responsive */
+        height: auto; /* Allow the height to adjust based on content */
+        margin: 10vh auto; /* Center the modal vertically */
+        padding: 15px; /* Adjust padding */
+        z-index: 1002;
+    }
+
+    .modal-header {
+        height: 100px; /* Reduce the height for smaller screens */
+        background-size: cover; /* Adjust background size */
+        background-position: center; /* Center the background image */
+    }
+
+    .wpcf7 {
+        max-width: 100%; /* Allow the form to take the full width */
+        padding: 10px; /* Add padding to the form for better spacing */
+        height: auto; /* Allow the height to adjust based on content */
+        font-size: 10px; /* Slightly reduce the font size */
+    }
+
+    .wpcf7 input[type="text"],
+    .wpcf7 input[type="email"],
+    .wpcf7 textarea {
+        padding: 8px; /* Adjust padding for inputs */
+        font-size: 10px; /* Slightly reduce the font size */
+    }
+
+    .wpcf7 input[type="submit"] {
+        width: 100%; /* Button takes full width on mobile */
+        height: 40px; /* Reduce button height */
+        font-size: 10px; /* Adjust the font size */
+    }
+}
+
 /*footer.php*/
 .site-footer { 
     background-color: #fff;
@@ -378,11 +490,12 @@ p {
 
 .footer-menu {
     display: flex;
-    justify-content: center;
-    max-width: 1440px; 
-    gap: 5vw; /*100px*/
-    list-style: none; 
-    padding: 0px;
+    flex-wrap: wrap;
+    justify-content: center; 
+    gap: 5vw; 
+    list-style: none;
+    padding: 0;
+    margin: 0;
 }
 
 .footer-menu li {
@@ -397,6 +510,22 @@ p {
 .footer-menu a {
     text-decoration: none;
     color: #000;
+}
+
+@media (max-width: 530px) {
+    .footer-menu {
+        flex-direction: column; 
+        align-items: center; 
+        gap: 10px; 
+    }
+}
+
+@media (max-width: 375px) {
+    .footer-menu {
+        flex-direction: column; 
+        align-items: center; 
+        gap: 10px; 
+    }
 }
 
 /*single-photo page*/
@@ -528,6 +657,83 @@ p {
     object-position: center; 
 }
 
+@media (max-width: 768px) {
+    .photo-page-wrapper {
+        display: flex;
+        flex-direction: column-reverse;
+        /*display: block; Stack the photo image and info vertically */
+        padding-top: 20px;
+    }
+
+    .photo-display {
+        width: 100%; /* Make photo-display section full width */
+        margin-bottom: 20px; /* Add some space below the photo-display */
+    }
+
+    .photo-info {
+        width: 100%; /* Make photo-info section full width */
+        padding-top: 0;
+        padding-right: 0;
+        padding-bottom: 50px;
+        border-bottom: none; /* Remove the border for a cleaner look */
+        align-self: auto;
+    }
+
+    .photo-interactions {
+        display: block; /* Stack the contact/navigation and related photos vertically */
+        height: auto;
+        border-bottom: none;
+    }
+
+    .contact-navigation {
+        display: block; /* Stack the contact section and navigation links vertically */
+        gap: 20px;
+        padding: 50px 0;
+        border-top: 1px solid #000;
+        border-bottom:  1px solid #000;
+    }
+
+    .contact-section {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 20px; /* Reduce the gap */
+    }
+
+    .contact-section button {
+        width: 263px; /* Make the button full width */
+        height: 50px; /* Adjust the button height */
+    }
+
+    .navigation-links {
+        display: none;
+    }
+
+    .related-photos {
+        margin: 50px 0; /* Adjust margin for mobile */
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .photo-list {
+        display: block; /* Stack related photos vertically */
+        gap: 20px;
+    }
+
+    .photo-block {
+        height: auto;
+        justify-content: center;
+    }
+
+    .photo-block img {
+        width: 317px;
+        height: 278px;
+        aspect-ratio: auto; /* Let images determine their own height */
+        padding-bottom: 20px;
+    }
+}
+
 /*photo-block.php*/
 /* Photo gallery styles */
 .photo-gallery {
@@ -535,7 +741,13 @@ p {
     grid-template-columns: repeat(2, 1fr); 
     gap: 20px; 
 }
-
+@media (max-width: 375px) {
+.photo-gallery {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 20px;
+}
+}
 .photo-item {
     position: relative; 
     width: 100%;
@@ -722,6 +934,4 @@ p {
     background: none;
     border: none;
 }
-
-
 

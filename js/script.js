@@ -5,13 +5,18 @@ document.addEventListener('DOMContentLoaded', function() {
     const closeMenu = document.querySelector('.close-menu');
 
     menuToggle.addEventListener('click', function() {
-        mobileMenu.classList.add('open');
+        mobileMenu.classList.toggle('open');
+        menuToggle.classList.toggle('open');
+        menuToggle.setAttribute('aria-expanded', mobileMenu.classList.contains('open'));
     });
 
     closeMenu.addEventListener('click', function() {
         mobileMenu.classList.remove('open');
+        menuToggle.classList.remove('open');
+        menuToggle.setAttribute('aria-expanded', 'false');
     });
 });
+
 
 jQuery(document).ready(function($) {
     // Get the modal contact form
@@ -62,6 +67,18 @@ jQuery(document).ready(function($) {
         }
     });
 });
+
+//filter 
+document.querySelectorAll('.filters select').forEach(select => {
+    select.addEventListener('change', function() {
+        if (this.value) {
+            this.classList.add('selected');
+        } else {
+            this.classList.remove('selected');
+        }
+    });
+});
+
 
 //for AJAX Request
 // Handle the filter and sort changes
