@@ -5,7 +5,7 @@
             'theme_location' => 'footer',
             'menu_class'     => 'footer-menu',
             'container'      => false,
-            'fallback_cb'    => 'wp_page_menu', // Optional fallback
+            'fallback_cb'    => 'wp_page_menu', // debug,Optional fallback
         ));
         ?>
     </nav>

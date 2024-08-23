@@ -74,7 +74,7 @@ p {
 }
 
 /*header.php*/
-/* Header Styles for Both Desktop and Mobile */
+/* Header Styles for Desktop and Mobile */
 .header {
     display: flex;
     justify-content: space-between;
@@ -85,20 +85,20 @@ p {
     margin-right: 5%;
     background-color: #FFFF;
     position: relative;
-    /*z-index: 1001;  Ensure it stays above the mobile menu */
+    /*z-index: 1001;   */
 }
 
 .site-logo {
     flex: 1;
     display: flex;
     align-items: center;
-    max-width: 216px; /* Set a max width for the logo */
+    max-width: 216px; 
 }
 
 .site-logo img {
-    width: 100%; /* Allow the image to scale within the parent container */
-    height: auto; /* Maintain the aspect ratio */
-    max-width: 100%; /* Ensure it doesn't exceed the container's width */
+    width: 100%; 
+    height: auto; 
+    max-width: 100%; 
 }
 
 .desktop-menu {
@@ -153,14 +153,14 @@ p {
 }
 
 .mobile-menu.open {
-    display: flex; /* Show menu as flexbox */
-    transform: translateX(0); /* Slide into view */
+    display: flex; 
+    transform: translateX(0); 
 }
 
 .menu-items {
     list-style: none;
     padding: 0;
-    margin-top: 80px; /* Creates space for the header */
+    margin-top: 80px; /* space for the header */
     flex-direction: column;
     align-items: center;
     overflow-y: auto;
@@ -179,7 +179,7 @@ p {
     color: white;
 }
 
-/* Close Button Styling */
+/* Close Button */
 .close-menu {
     background: none;
     border: none;
@@ -201,7 +201,7 @@ p {
         display: block; /* Show burger icon on mobile */
     }
 
-    .mobile-menu.open .header { /*doesnt ditect as style*/
+    .mobile-menu.open .header { /*need to figure out, doesnt ditect as style*/
         position: fixed;
         top: 0;
         left: 0;
@@ -216,9 +216,9 @@ p {
     }
 
     .close-menu {
-        top: 3rem; /* Position close button at the top */
-        right: 2rem; /* Align close button to the right */
-        z-index: 1002; /* Ensure it's above the menu */
+        top: 3rem; 
+        right: 2rem; 
+        z-index: 1002; /*  above the menu */
     }
 }
 
@@ -252,41 +252,44 @@ p {
     font-weight: 700;
     line-height: 142.18px;
     color: transparent; 
-    -webkit-text-stroke: 3px rgba(255, 255, 255, 1);
+    -webkit-text-stroke: 0.1px rgba(255, 255, 255, 1);
 }
 @media (min-width: 376px) and (max-width: 768px) {
     .hero-section {
-        width: 100%;  /* Make the section width 100% of the viewport */
-        height: auto;  /* Allow the height to adjust automatically */
-        padding: 20px; /* Add padding to ensure content is not too close to the edges */
+        width: 100%;  
+        height: auto;  /* dont know yet how to keep ratio */
+        object-fit: contain; 
+        padding: 20px; 
         display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        margin-bottom: 50px;
     }
 
     .hero-content h1 {
-        font-size: 48px; /* Adjust font size for medium-sized screens */
-        line-height: 72px; /* Adjust line height */
-        -webkit-text-stroke: 2px rgba(255, 255, 255, 1); /* Adjust text stroke */
+        font-size: 48px; 
+        line-height: 72px; 
+        -webkit-text-stroke: 0.1px rgba(255, 255, 255, 1); 
     }
 }
 @media (max-width: 375px) {
     .hero-section {
-        width: 375px;  /* Set the width to 375px */
-        height: 250.33px;  /* Set the height to 250.33px */
-        margin-bottom: 50px; /* Adjust the margin-bottom if needed */
+        width: 375px;  
+        height: 250.33px;  
+        margin-bottom: 50px; 
         display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        margin-bottom: 50px;
     }
 
     .hero-content h1 {
-        font-size: 27.6px; /* Scale down the font size */
-        line-height: 36px; /* Adjust the line height */
-        -webkit-text-stroke: 1px rgba(255, 255, 255, 1); /* Adjust text stroke */
-        text-align: center; /* Center the text on smaller screens */
+        font-size: 27.6px; 
+        line-height: 36px; 
+        -webkit-text-stroke: 0.1px rgba(255, 255, 255, 1); 
+        text-align: center; 
     }
 }
 /* filters */
@@ -304,18 +307,19 @@ p {
 #filter-category,
 #filter-format,
 #filter-date {
-    width: 100%; /* Full width for smaller screens */
-    max-width: 300px; /* Max width to avoid too large filters */
-    height: 42px;
+    width: 100%; 
+    max-width: 300px; 
+    height: 44px;
     padding: 11px 18px;
     border-radius: 8px;
-    border: 1.3px solid;
-    margin-bottom: 10px; /* Spacing between filters */
+    border: 1.3px solid rgba(184, 187, 194, 1);
+    margin-bottom: 10px; 
 }
 
 select {
     background-color: white;
-    color: black;
+    color:black;
+    
 }
 
 select option {
@@ -330,7 +334,17 @@ select option:checked {
     background-color: red;
     color: white;
 }
+@media  (min-width: 651px) and (max-width: 925px) {
+    .filters {
+        justify-content: center;
+    }
+}
 
+@media  (min-width: 376px) and (max-width: 650px) {
+    .filters {
+        justify-content: center;
+    }
+}
 
 @media (max-width: 375px) {
     .filters {
@@ -361,12 +375,12 @@ select option:checked {
 .modal {
     display: none; /* Hidden by default */
     position: fixed; /* Stay in place */
-    z-index: 1000; /* Sit on top */
+    z-index: 1000; /* above all*/
     left: 0;
     top: 0;
-    width: 100%; /* Full width */
-    height: 100%; /* Full height */
-    overflow: auto; /* Enable scroll if needed */
+    width: 100%; 
+    height: 100%; 
+    overflow: auto; /* able to scroll */
     background-color: rgba(0,0,0,0.4); 
 }
 /* Modal Header part with img*/
@@ -436,41 +450,75 @@ select option:checked {
     font-weight: 400;
     line-height: 17.77px;
 }
-
-/* Mobile Devices (375px width) */
-@media (max-width: 375px) {
+@media (min-width: 376px) and (max-width: 650px) {
     .modal-content {
-        width: 90%; /* Use a percentage width to make the modal responsive */
-        height: auto; /* Allow the height to adjust based on content */
-        margin: 10vh auto; /* Center the modal vertically */
-        padding: 15px; /* Adjust padding */
+        width: 90%;
+        height: auto; 
+        margin: 10vh auto; 
+        padding: 15px; 
         z-index: 1002;
     }
 
     .modal-header {
-        height: 100px; /* Reduce the height for smaller screens */
-        background-size: cover; /* Adjust background size */
-        background-position: center; /* Center the background image */
+        height: 100px; 
+        background-size: cover; 
+        background-position: center; 
     }
 
     .wpcf7 {
-        max-width: 100%; /* Allow the form to take the full width */
-        padding: 10px; /* Add padding to the form for better spacing */
-        height: auto; /* Allow the height to adjust based on content */
-        font-size: 10px; /* Slightly reduce the font size */
+        max-width: 263px; 
+        padding: 10px; 
+        height: auto; 
+        font-size: 10px;
     }
 
     .wpcf7 input[type="text"],
     .wpcf7 input[type="email"],
     .wpcf7 textarea {
-        padding: 8px; /* Adjust padding for inputs */
-        font-size: 10px; /* Slightly reduce the font size */
+        padding: 8px; 
+        font-size: 10px; 
     }
 
     .wpcf7 input[type="submit"] {
-        width: 100%; /* Button takes full width on mobile */
-        height: 40px; /* Reduce button height */
-        font-size: 10px; /* Adjust the font size */
+        width: 100%; 
+        height: 40px; 
+        font-size: 10px; 
+}
+}
+/* Mobile Devices (375px width) */
+@media (max-width: 375px) {
+    .modal-content {
+        width: 90%; 
+        height: auto; 
+        margin: 10vh auto; 
+        padding: 15px; 
+        z-index: 1002;
+    }
+
+    .modal-header {
+        height: 100px; 
+        background-size: cover; 
+        background-position: center; 
+    }
+
+    .wpcf7 {
+        max-width: 100%; 
+        padding: 10px; 
+        height: auto; 
+        font-size: 10px; 
+    }
+
+    .wpcf7 input[type="text"],
+    .wpcf7 input[type="email"],
+    .wpcf7 textarea {
+        padding: 8px; 
+        font-size: 10px; 
+    }
+
+    .wpcf7 input[type="submit"] {
+        width: 100%; 
+        height: 40px; 
+        font-size: 10px; 
     }
 }
 
@@ -481,6 +529,7 @@ select option:checked {
     max-width: 1440px;
     height: 40px;
     border-top: 1px solid #000;
+    margin-bottom: 20px;
 }
 
 .footer-nav {
@@ -516,7 +565,8 @@ select option:checked {
     .footer-menu {
         flex-direction: column; 
         align-items: center; 
-        gap: 10px; 
+        gap: 20px;
+        padding: 50px 0; 
     }
 }
 
@@ -524,7 +574,8 @@ select option:checked {
     .footer-menu {
         flex-direction: column; 
         align-items: center; 
-        gap: 10px; 
+        gap: 20px; 
+        padding: 50px 0;
     }
 }
 
@@ -662,31 +713,32 @@ select option:checked {
         display: flex;
         flex-direction: column-reverse;
         /*display: block; Stack the photo image and info vertically */
-        padding-top: 20px;
+        padding: 50px;
     }
 
     .photo-display {
-        width: 100%; /* Make photo-display section full width */
-        margin-bottom: 20px; /* Add some space below the photo-display */
+        width: 100%; 
+        margin-bottom: 20px; 
     }
 
     .photo-info {
-        width: 100%; /* Make photo-info section full width */
+        width: 100%; 
         padding-top: 0;
         padding-right: 0;
-        padding-bottom: 50px;
-        border-bottom: none; /* Remove the border for a cleaner look */
+        border-bottom: none; 
         align-self: auto;
     }
-
+    .photo-info h2 {
+        margin-top: 0px;
+    }
     .photo-interactions {
-        display: block; /* Stack the contact/navigation and related photos vertically */
+        display: block; 
         height: auto;
         border-bottom: none;
     }
 
     .contact-navigation {
-        display: block; /* Stack the contact section and navigation links vertically */
+        display: block; 
         gap: 20px;
         padding: 50px 0;
         border-top: 1px solid #000;
@@ -697,12 +749,12 @@ select option:checked {
         display: flex;
         flex-direction: column;
         align-items: center;
-        gap: 20px; /* Reduce the gap */
+        gap: 20px; 
     }
 
     .contact-section button {
-        width: 263px; /* Make the button full width */
-        height: 50px; /* Adjust the button height */
+        width: 263px; 
+        height: 50px; 
     }
 
     .navigation-links {
@@ -710,14 +762,17 @@ select option:checked {
     }
 
     .related-photos {
-        margin: 50px 0; /* Adjust margin for mobile */
+        margin: 50px 0; 
         display: flex;
         flex-direction: column;
         align-items: center;
     }
 
+    .related-photos h3 {
+        padding-bottom: 20px;
+    }
     .photo-list {
-        display: block; /* Stack related photos vertically */
+        display: block; 
         gap: 20px;
     }
 
@@ -729,7 +784,7 @@ select option:checked {
     .photo-block img {
         width: 317px;
         height: 278px;
-        aspect-ratio: auto; /* Let images determine their own height */
+        aspect-ratio: auto; 
         padding-bottom: 20px;
     }
 }
@@ -741,12 +796,21 @@ select option:checked {
     grid-template-columns: repeat(2, 1fr); 
     gap: 20px; 
 }
-@media (max-width: 375px) {
-.photo-gallery {
-    display: grid;
-    grid-template-columns: repeat(1, 1fr);
-    gap: 20px;
+@media  (min-width: 376px) and (max-width: 650px)  {
+    .photo-gallery {
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+        gap: 20px;
+        padding:0 20px;
+    }
 }
+@media (max-width: 375px) {
+    .photo-gallery {
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+        gap: 20px;
+        padding:0 20px;
+    }
 }
 .photo-item {
     position: relative; 
