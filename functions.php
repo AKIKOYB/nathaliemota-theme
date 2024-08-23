@@ -24,7 +24,7 @@ function nathaliemota_enqueue_scripts() {
     // Enqueue the main stylesheet
     wp_enqueue_style('theme-style', get_stylesheet_uri());
 
-    // Enqueue custom scripts with jQuery as a dependency
+    // debug, not twice. custom scripts with jQuery
     //wp_enqueue_script('theme-scripts', get_template_directory_uri() . '/js/script.js', array('jquery'), null, true);
 
     // Enqueue AJAX script and provide the AJAX URL
@@ -92,3 +92,32 @@ function load_more_photos_ajax() {
 
 add_action('wp_ajax_load_more_photos', 'load_more_photos_ajax');
 add_action('wp_ajax_nopriv_load_more_photos', 'load_more_photos_ajax');
+
+// Function to loop through posts when at the last or first post
+function get_adjacent_post_link_loop($in_same_term = false, $excluded_terms = '', $previous = true, $taxonomy = 'category') {
+    if ($previous && is_single()) {
+        $post = get_previous_post($in_same_term, $excluded_terms, $taxonomy);
+    } else {
+        $post = get_next_post($in_same_term, $excluded_terms, $taxonomy);
+    }
+
+    if (!$post) {
+        // No adjacent post, so loop to the other end
+        $args = array(
+            'posts_per_page' => 1,
+            'order' => $previous ? 'DESC' : 'ASC',
+            'post_type' => get_post_type(),
+            'post_status' => 'publish'
+        );
+
+        $posts = get_posts($args);
+
+        if ($posts) {
+            $post = $posts[0];
+        } else {
+            return null; // No posts found, return null
+        }
+    }
+
+    return $post;
+}
