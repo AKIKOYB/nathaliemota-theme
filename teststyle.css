@@ -126,12 +126,8 @@ p {
     text-align: left;
     text-decoration: none;
     color: #000000;
-    transition: font-weight 0.3s ease; /* Smooth transition for font weight change */
 }
 
-.primary-menu a:hover {
-    font-weight: 700; /* Bold font weight */
-}
 /* Mobile Menu Styles */
 .menu-toggle {
     display: none; /* Hidden by default */
@@ -246,7 +242,7 @@ p {
     align-items: center;
     justify-content: center;
     text-align: center;
-    /*margin-bottom: 100px;*/
+    margin-bottom: 100px;
 }
 
 .hero-content h1 {
@@ -297,7 +293,6 @@ p {
     }
 }
 /* filters */
-/* reuse from codepen starts with js */
 .filters {
     max-width: 100%;
     box-sizing: border-box;
@@ -318,109 +313,170 @@ p {
 #filter-format,
 #filter-date {
     width: 100%; 
-    max-width: 260px; 
+    max-width: 300px; 
     height: 44px;
-    padding: 0px 18px;
-    padding-left: 30px; /* Add 30px left padding */
+    padding: 11px 18px;
     border-radius: 8px;
     border: 1.3px solid rgba(184, 187, 194, 1);
     margin-bottom: 10px; 
     background-color: white; 
-    display: flex; /* Use flexbox to center text */
-    align-items: center;
-    position: relative; /* Position relative for the pseudo-element */
-    appearance: none; /* Remove default select arrow in some browsers */
-    -moz-appearance: none; /* Remove default select arrow in Firefox */
-    -webkit-appearance: none; /* Remove default select arrow in WebKit browsers */
 }
 
-#filter-category::after,
-#filter-format::after,
-#filter-date::after {
-    content: '▼'; /* Arrow icon */
-    font-size: 12px; /* Adjust size as needed */
-    color: rgba(184, 187, 194, 1); /* Arrow color */
-    position: absolute; /* Position it absolutely to the right */
-    right: 20px; /* Distance from the right side */
-    pointer-events: none; /* Ensures the arrow doesn’t capture any click events */
-}
-
-.select-hidden {
-    display: none;
-    visibility: hidden;
-    position: absolute;
-    left: -9999px;
-}
-
+/* Style the select container */
 .select {
     position: relative;
     display: inline-block;
-    cursor: pointer;
-    background-color: white; /* Background color white */
-    color: black; 
-    width: 100%; /* Ensure select container takes full width of parent */
-    max-width: 260px; /* Matches the filter width */
+    width: 100%;
+    max-width: 300px; /* Ensure the container width matches */
 }
 
+/* Style for the custom-styled select div */
 .select-styled {
-    padding: 10px 10px 10px 30px;
-    cursor: pointer;
-    max-width: 260px; 
-    height: 44px;
+    position: relative;
+    padding: 11px 18px;
     border-radius: 8px;
     border: 1.3px solid rgba(184, 187, 194, 1);
-    margin-bottom: 10px; 
-    background-color: white; 
-    display: flex; /* Use flexbox to center text */
-    align-items: center; /* Vertically centers the text */
-    box-sizing: border-box;
-    position: relative; /* Position relative for the pseudo-element */
+    background-color: white;
+    cursor: pointer;
 }
 .select-styled::after {
-    content: '▼'; /* Arrow icon */
-    font-size: 12px; /* Adjust size as needed */
-    color: rgba(184, 187, 194, 1); /* Arrow color */
-    position: absolute; /* Position it absolutely to the right */
-    right: 20px; /* Distance from the right side */
-    pointer-events: none; /* Ensures the arrow doesn’t capture any click events */
+    content: '';
+    position: absolute;
+    top: 50%;
+    right: 18px;
+    width: 0;
+    height: 0;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 5px solid rgba(184, 187, 194, 1);
+    transform: translateY(-50%);
+    pointer-events: none;
 }
+/* must keep, Style for the options dropdown */
 .select-options {
     display: none;
     position: absolute;
-    background-color: white; /* Background color white */
+    top: 100%;
+    left: 0;
+    right: 0;
+    z-index: 99;
+    background: white;
     border: 1px solid #ddd;
-    z-index: 100;
+    border-radius: 8px;
+    max-height: 150px;
+    /*overflow-y: auto;  i have to remove this, dont need this*/
     list-style: none; /*removing dots style*/
     padding: 0;
     margin: 0;
-    width: 100%; /* Takes full width of the parent */
-    max-width: 260px; /* Matches the filter width */
-    box-sizing: border-box;
 }
 
+/* Style for individual option items */
 .select-options li {
-    padding: 10px 0px;
-    padding-left: 30px; /* Add 30px left padding for list items */
+    padding: 10px;
     cursor: pointer;
-    width: calc(100% - 30px);  
+    transition: background-color 0.2s ease;
 }
 
+/* Hover and active styles */
 .select-options li:hover {
     background-color: pink; 
-    color: white;
-    width: 100%; /* Ensure hover and selected background cover full width */
-    box-sizing: border-box;
-}
-.select-options li.is-selected {
-    background-color: red; /* Selected option color red */
-    color: white;
-    width: 100%; /* Ensure hover and selected background cover full width */
-    box-sizing: border-box;
-}
-.select-styled.active {
-    border-color: #ddd;
 }
 
+.select-options li.is-selected {
+    background-color: red;
+    color: white;
+}
+
+/* Active class for styled select 
+.select-styled.active,
+.select-styled.active:after {
+    background-color: white;
+}*/
+
+/* Ensure original select is still available for screen readers but hidden from view */
+select {
+    opacity: 0;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+}
+
+
+/*test try, it works changing backgroud color, keep for while
+#filter-category:hover,
+#filter-format:hover,
+#filter-date:hover { 
+     background-color: yellow; 
+  } */
+  
+
+
+/* reuse from codepen starts with js */
+/*remove it as test
+  .select-styled {
+    background-color: white; 
+  }
+  
+  /*remove it as test
+  .select-styled:after {
+    content: "";
+    width: 0;
+    height: 0;
+    border: 7px solid transparent;
+    border-color: #333 transparent transparent transparent; /* Replace with actual color value 
+    position: absolute;
+    top: 16px;
+    right: 10px;
+  }*/
+
+  /*keep,remove it as test!
+  .select-styled:hover {
+    background-color: pink; 
+  }*/
+
+  /*must keepkeep keep*/
+  .select-styled:active,
+  .select-styled.active {
+    background-color: white; 
+  }
+  
+  .select-styled:active:after,
+  .select-styled.active:after {
+    top: 9px;
+    border-color: transparent transparent #333 transparent; 
+  }
+   /* remove 
+  .select-options {
+    display: none;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    left: 0;
+    z-index: 999;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    background-color:white; 
+  }*/
+  
+  /*keep,remove it as test*/
+  .select-options li:hover {/* keep */
+    color: #f0f0f0; 
+    background: pink; 
+  }
+
+/*keep,remove it as test*/
+  .select-options li.is-selected {/* keep */
+    color: #f0f0f0; 
+    background: red; 
+  }
+  /*keep,remove it as test*/
+  .select-options li[rel="hide"] {/* keep */
+    display: none;
+  }
 /* reuse from codepen starts with js */
 
 @media  (min-width: 651px) and (max-width: 925px) {
@@ -457,12 +513,8 @@ p {
     font-size: 12px;
     font-weight: 400;
     cursor: pointer;
-    transition: background-color 0.3s ease, color 0.3s ease; /* Smooth transition for color change */
 }
-#plus:hover {
-    background-color: black; /* Change to a darker grey on hover */
-    color: white; /* Optional: change text color on hover */
-}
+
 /*modal-contact.php*/ 
 /* Modal pop up*/
 .modal {
@@ -652,11 +704,6 @@ p {
 .footer-menu a {
     text-decoration: none;
     color: #000;
-    transition: font-weight 0.3s ease; /* Smooth transition for font weight change */
-}
-
-.footer-menu a:hover {
-    font-weight: 700; /* Bold font weight */
 }
 
 @media (max-width: 530px) {
@@ -1025,7 +1072,7 @@ p {
     align-items: center;
     justify-content: center;
     opacity: 0;
-    transition:  all 0.5s ease;
+    transition: opacity 0.3s ease;
 }
 
 .photo-item:hover .photo-overlay {
@@ -1169,7 +1216,6 @@ p {
     font-weight: 400;
     cursor: pointer;
     z-index: 10000; 
-    transition: all 0.3s ease; /* Smooth transition for all properties */
 }
 
 .lightbox-prev {
@@ -1179,10 +1225,6 @@ p {
     border: none;
 }
 
-.lightbox-prev::before {
-    content: " ←";
-}
-
 .lightbox-next {
     right: 10px;
     color: white;
@@ -1190,21 +1232,3 @@ p {
     border: none;
 }
 
-.lightbox-next::after {
-    content: "→ ";
-}
-
-/* Hover Effects */
-.lightbox-prev:hover, .lightbox-next:hover {
-    font-weight: 700; 
-    color: #ffffff; 
-    transition: all 0.3s ease; 
-}
-
-.lightbox-prev:hover::before {
-    content: "⟵— "; 
-}
-
-.lightbox-next:hover::after {
-    content: " —⟶"; 
-}
