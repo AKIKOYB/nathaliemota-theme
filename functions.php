@@ -76,6 +76,11 @@ function load_more_photos_ajax() {
         );
     }
 
+    // Query to get the total number of photos
+    $total_photos_query = new WP_Query(array_merge($args, ['posts_per_page' => -1]));
+    $total_photos = $total_photos_query->found_posts;
+    $total_pages = ceil($total_photos / 8); // Calculate total number of pages
+
     $photo_query = new WP_Query($args);
 
     if ($photo_query->have_posts()) :
@@ -83,9 +88,10 @@ function load_more_photos_ajax() {
             get_template_part('template-parts/photo_block');
         endwhile;
         wp_reset_postdata();
-    else :
-        echo '<p>No photos found.</p>';
     endif;
+
+    // Include total pages in the response
+    echo '<div class="total-pages" data-total-pages="' . esc_attr($total_pages) . '"></div>';
 
     wp_die();
 }

@@ -26,9 +26,9 @@ jQuery(document).ready(function($) {
     }
 
     // Open lightbox on full-screen icon click
-    $('.fullscreen-icon').on('click', function(e) {
+    $(document).on('click', '.fullscreen-icon', function(e) {
         e.preventDefault();
-        var index = $(this).closest('.photo-item').index('.photo-item');
+        var index = $(this).closest('.photo-block, .photo-item').index('.photo-block, .photo-item');
         openLightbox(index);
     });
 
@@ -48,5 +48,10 @@ jQuery(document).ready(function($) {
     $('#lightbox-prev').on('click', function(e) {
         e.preventDefault();
         showPrevImage();
+    });
+
+    // Update images variable whenever the DOM changes
+    $(document).on('DOMNodeInserted', function(e) {
+        images = $('.fullscreen-icon');
     });
 });

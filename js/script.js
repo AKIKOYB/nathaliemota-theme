@@ -34,7 +34,7 @@ jQuery(document).ready(function ($) {
         var category = $('#filter-category').val();
         var format = $('#filter-format').val();
         var order = $('#filter-date').val();
-
+    
         $.ajax({
             url: nathaliemota_ajax.ajax_url,
             type: 'post',
@@ -49,33 +49,50 @@ jQuery(document).ready(function ($) {
                 $('#plus').text('Loading...');
             },
             success: function (response) {
-                if (response) {
+                if (response.trim() !== '') {
+                    // Append or replace photo content
                     if (append) {
                         $('.photo-gallery').append(response);
                     } else {
                         $('.photo-gallery').html(response);
                     }
-                    $('#plus').data('page', page);
-                    $('#plus').text('Charger plus');
-                } else {
-                    if (!button.hasClass('no-more-photos')) {
-                        button.text('No more photos');
-                        button.prop('disabled', true);
-                        button.addClass('no-more-photos');
+                    $('#plus').data('page', page); // Update page number
+    
+                    // Get total pages from the response
+                    var total_pages = $('.total-pages').data('total-pages');
+    
+                    // Hide the button if all pages are loaded
+                    if (page >= total_pages) {
+                        $('#plus').hide();
+                    } else {
+                        $('#plus').text('Charger plus'); // Reset button text
                     }
+    
+                    $('.total-pages').remove(); // Remove total pages element after using
+                } else {
+                    $('#plus').hide(); // Hide button if no more photos
                 }
+            },
+            error: function () {
+                $('#plus').text('Error loading photos');
             }
         });
     }
-
+    
+    // Event listeners for filters
     $('#filter-category, #filter-format, #filter-date').on('change', function () {
-        loadPhotos(1, false);
+        loadPhotos(1, false); // Reset to page 1 and replace existing photos
+        $('#plus').show(); // Show the button again when filters change
     });
-
+    
+    // Event listener for "Charger plus" button
     $('#plus').on('click', function () {
         var page = $(this).data('page') + 1;
         loadPhotos(page);
     });
+    
+    
+    
 
     // Lightbox functionality
     $('.fullscreen-icon').on('click', function (event) {
