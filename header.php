@@ -49,5 +49,28 @@
             ?>
         </nav>
     </header>
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var menuToggle = document.querySelector('.menu-toggle');
+        var mobileMenu = document.querySelector('.mobile-menu');
+        var closeMenu = document.querySelector('.close-menu');
+
+        // Toggle mobile menu open/close
+        menuToggle.addEventListener('click', function() {
+            mobileMenu.classList.toggle('open');
+            // Update aria-expanded to true or false based on the menu state
+            var isExpanded = menuToggle.getAttribute('aria-expanded') === 'true' || false;
+            menuToggle.setAttribute('aria-expanded', !isExpanded);
+        });
+
+        // Close menu button functionality
+        closeMenu.addEventListener('click', function() {
+            mobileMenu.classList.remove('open');
+            menuToggle.setAttribute('aria-expanded', false);
+        });
+    });
+</script>
+
+    <?php wp_footer(); ?>
 </body>
 </html>
