@@ -26,7 +26,7 @@
                 'theme_location' => 'primary',
                 'menu_class'     => 'primary-menu',
                 'container'      => false,
-                'fallback_cb'    => false, //debug
+                'fallback_cb'    => false,
             ));
             ?>
         </nav>
@@ -36,7 +36,7 @@
             <span class="menu-icon">&#9776;</span> <!-- Burger icon -->
         </div>
 
-        <!-- Mobile Menu -->
+        <!-- Mobile Menu (moved inside header) -->
         <nav id="primary-menu" class="mobile-menu">
             <button class="close-menu" aria-label="Close Menu">&times;</button>
             <?php
@@ -49,6 +49,7 @@
             ?>
         </nav>
     </header>
+
     <script>
     document.addEventListener('DOMContentLoaded', function() {
         var menuToggle = document.querySelector('.menu-toggle');
@@ -69,7 +70,7 @@
             menuToggle.setAttribute('aria-expanded', false);
         });
     });
-</script>
+    </script>
 
     <?php wp_footer(); ?>
 </body>

@@ -73,6 +73,11 @@ p {
     text-align: left;
 }
 
+@media (max-width: 768px) {
+    main{
+        margin-top: 80px;
+    }
+}
 /*header.php*/
 /* Header Styles for Desktop and Mobile */
 
@@ -86,6 +91,10 @@ p {
     margin-right: 5%;
     background-color: #FFFF;
     position: relative; /* Keep position relative for proper stacking context */
+    top: 0;
+    left: 0;
+    right: 0;
+
     z-index: 1001; /* Ensure header stays above other elements */
 }
 .site-logo {
@@ -142,8 +151,9 @@ p {
 
 /* Mobile Menu Styles */
 .mobile-menu {
+    display: none; /* added, Hidden by default */
     position: fixed;
-    top: 0;
+    top: 80px; 
     right: 0;
     width: 100%;
     height: 100%;
@@ -214,6 +224,7 @@ p {
         margin-left: 0; /* Remove left margin */
         margin-right: 0; /* Remove right margin */
         padding: 0 20px; /* Padding for mobile spacing */
+        position: fixed;
     }
 
     .mobile-menu.open .header {
@@ -279,6 +290,7 @@ p {
         align-items: center;
         justify-content: center;
         text-align: center;
+        margin-top: 80px;
         margin-bottom: 50px;
     }
 
@@ -297,6 +309,7 @@ p {
         align-items: center;
         justify-content: center;
         text-align: center;
+        margin-top: 80px;
         margin-bottom: 50px;
     }
 
