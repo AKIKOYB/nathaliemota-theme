@@ -94,7 +94,6 @@ p {
     top: 0;
     left: 0;
     right: 0;
-
     z-index: 1001; /* Ensure header stays above other elements */
 }
 .site-logo {
@@ -147,6 +146,8 @@ p {
     display: none; /* Hidden by default */
     cursor: pointer;
     font-size: 25px;
+    z-index: 1002; /* Ensure it's above the mobile menu */
+    position: relative; /
 }
 
 /* Mobile Menu Styles */
@@ -167,7 +168,6 @@ p {
     justify-content: center; /* Center items horizontally */
     align-items: center; /* Center items vertically */
 }
-
 
 .mobile-menu.open {
     transform: translateX(0); /* Slide in when open */
@@ -200,12 +200,12 @@ p {
 .close-menu {
     background: none;
     border: none;
-    font-size: 25px;
+    font-size: 40px;
     cursor: pointer;
-    position: absolute;
+    /*position: absolute;
     top: 1rem;
     right: 1rem;
-    z-index: 1002;
+    z-index: 1002;*/
 }
 
 /* Responsive Styles */
@@ -225,6 +225,11 @@ p {
         margin-right: 0; /* Remove right margin */
         padding: 0 20px; /* Padding for mobile spacing */
         position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        background-color: #FFFF;
+        z-index: 1001; 
     }
 
     .mobile-menu.open .header {
@@ -241,16 +246,19 @@ p {
         padding: 0 20px;
     }
 
-    .close-menu {
-        top: 3rem; 
+    /*.close-menu {
+        /*top: 3rem; 
         right: 2rem; 
-        z-index: 1002; /* Ensure above menu content */
-    }
+        z-index: 1002;  Ensure above menu content 
+    }*/
 }
 
 @media (min-width: 769px) {
     .mobile-menu {
         display: none; /* Hide mobile menu on larger screens */
+    }
+    .menu-toggle {
+        display: none; /* Hide burger icon on larger screens */
     }
 }
 
@@ -326,7 +334,7 @@ p {
     max-width: 100%;
     box-sizing: border-box;
     margin-top: 70px;
-    margin-bottom: 30px;
+    margin-bottom: 50px;
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;

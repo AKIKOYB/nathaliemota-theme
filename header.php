@@ -36,9 +36,11 @@
             <span class="menu-icon">&#9776;</span> <!-- Burger icon -->
         </div>
 
-        <!-- Mobile Menu (moved inside header) -->
+        <!-- Close Menu Button -->
+        <button class="close-menu" aria-label="Close Menu">&times;</button>
+
+        <!-- Mobile Menu -->
         <nav id="primary-menu" class="mobile-menu">
-            <button class="close-menu" aria-label="Close Menu">&times;</button>
             <?php
             wp_nav_menu(array(
                 'theme_location' => 'primary',
@@ -51,26 +53,30 @@
     </header>
 
     <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        var menuToggle = document.querySelector('.menu-toggle');
-        var mobileMenu = document.querySelector('.mobile-menu');
-        var closeMenu = document.querySelector('.close-menu');
+document.addEventListener('DOMContentLoaded', function() {
+    var menuToggle = document.querySelector('.menu-toggle');
+    var mobileMenu = document.querySelector('.mobile-menu');
+    var closeMenu = document.querySelector('.close-menu');
 
-        // Toggle mobile menu open/close
-        menuToggle.addEventListener('click', function() {
-            mobileMenu.classList.toggle('open');
-            // Update aria-expanded to true or false based on the menu state
-            var isExpanded = menuToggle.getAttribute('aria-expanded') === 'true' || false;
-            menuToggle.setAttribute('aria-expanded', !isExpanded);
-        });
+    // Function to toggle the mobile menu and button visibility
+    function toggleMenu() {
+        var isMenuOpen = mobileMenu.classList.toggle('open');
+        menuToggle.style.display = isMenuOpen ? 'none' : 'block';
+        closeMenu.style.display = isMenuOpen ? 'block' : 'none';
+        menuToggle.setAttribute('aria-expanded', isMenuOpen);
+    }
 
-        // Close menu button functionality
-        closeMenu.addEventListener('click', function() {
-            mobileMenu.classList.remove('open');
-            menuToggle.setAttribute('aria-expanded', false);
-        });
-    });
-    </script>
+    // Open menu button (burger icon)
+    menuToggle.addEventListener('click', toggleMenu);
+
+    // Close menu button (close icon)
+    closeMenu.addEventListener('click', toggleMenu);
+    
+    // Ensure correct initial visibility on load
+    menuToggle.style.display = 'block'; 
+    closeMenu.style.display = 'none';
+});
+</script>
 
     <?php wp_footer(); ?>
 </body>
