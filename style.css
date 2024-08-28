@@ -81,6 +81,7 @@ p {
 /*header.php*/
 /* Header Styles for Desktop and Mobile */
 
+/* General Header Styles */
 .header {
     display: flex;
     justify-content: space-between;
@@ -96,17 +97,18 @@ p {
     right: 0;
     z-index: 1001; /* Ensure header stays above other elements */
 }
+
 .site-logo {
     flex: 1;
     display: flex;
     align-items: center;
-    max-width: 216px; 
+    max-width: 216px;
 }
 
 .site-logo img {
-    width: 100%; 
-    height: auto; 
-    max-width: 100%; 
+    width: 100%;
+    height: auto;
+    max-width: 100%;
 }
 
 .desktop-menu {
@@ -147,14 +149,13 @@ p {
     cursor: pointer;
     font-size: 25px;
     z-index: 1002; /* Ensure it's above the mobile menu */
-    position: relative; /
+    position: relative;
 }
 
-/* Mobile Menu Styles */
 .mobile-menu {
-    display: none; /* added, Hidden by default */
+    display: none; /* Hidden by default */
     position: fixed;
-    top: 80px; 
+    top: 80px;
     right: 0;
     width: 100%;
     height: 100%;
@@ -204,19 +205,22 @@ p {
     cursor: pointer;
     display: none; /* Hidden by default */
     z-index: 1002; /* Ensure above menu content */
-    /*position: absolute;
-    top: 1rem;
-    right: 1rem;
-    z-index: 1002;*/
 }
-/* Desktop Menu Visibility */
+
+/* Responsive Styles */
+
+/* Desktop Styles */
 @media (min-width: 769px) {
     .mobile-menu, /* Hide mobile menu on larger screens */
     .menu-toggle { /* Hide burger icon on larger screens */
         display: none;
     }
+    .desktop-menu {
+        display: flex; /* Show desktop menu */
+    }
 }
-/* Responsive Styles */
+
+/* Mobile Styles */
 @media (max-width: 768px) {
     .desktop-menu {
         display: none; /* Hide desktop menu on mobile */
@@ -225,10 +229,7 @@ p {
     .menu-toggle {
         display: block; /* Show burger icon on mobile */
     }
-    
-    .mobile-menu {
-        display: none; /* Hidden by default, only shows when toggled */
-    }
+
     .header {
         width: 100%;
         max-width: 100%; /* Ensure full width on mobile */
@@ -240,7 +241,7 @@ p {
         left: 0;
         right: 0;
         background-color: #FFFF;
-        z-index: 1001; 
+        z-index: 1001;
     }
 
     .mobile-menu.open .header {
@@ -255,21 +256,6 @@ p {
         justify-content: space-between;
         align-items: center;
         padding: 0 20px;
-    }
-
-    /*.close-menu {
-        /*top: 3rem; 
-        right: 2rem; 
-        z-index: 1002;  Ensure above menu content 
-    }*/
-}
-
-@media (min-width: 769px) {
-    .mobile-menu {
-        display: none; /* Hide mobile menu on larger screens */
-    }
-    .menu-toggle {
-        display: none; /* Hide burger icon on larger screens */
     }
 }
 

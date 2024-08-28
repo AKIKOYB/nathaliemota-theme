@@ -53,28 +53,35 @@
     </header>
 
     <script>
-document.addEventListener('DOMContentLoaded', function() {
-    var menuToggle = document.querySelector('.menu-toggle');
-    var mobileMenu = document.querySelector('.mobile-menu');
-    var closeMenu = document.querySelector('.close-menu');
+        document.addEventListener('DOMContentLoaded', function() {
+            var menuToggle = document.querySelector('.menu-toggle');
+            var mobileMenu = document.querySelector('.mobile-menu');
+            var closeMenu = document.querySelector('.close-menu');
 
-    function toggleMenu() {
-        var isMenuOpen = mobileMenu.classList.toggle('open');
-        menuToggle.style.display = isMenuOpen ? 'none' : 'block';
-        closeMenu.style.display = isMenuOpen ? 'block' : 'none';
-        menuToggle.setAttribute('aria-expanded', isMenuOpen);
-    }
+            function toggleMenu() {
+                var isMenuOpen = mobileMenu.classList.toggle('open');
+                menuToggle.style.display = isMenuOpen ? 'none' : 'block';
+                closeMenu.style.display = isMenuOpen ? 'block' : 'none';
+                menuToggle.setAttribute('aria-expanded', isMenuOpen);
+            }
 
-    // Open menu button (burger icon)
-    menuToggle.addEventListener('click', toggleMenu);
+            menuToggle.addEventListener('click', toggleMenu);
+            closeMenu.addEventListener('click', toggleMenu);
 
-    // Close menu button (close icon)
-    closeMenu.addEventListener('click', toggleMenu);
-    
-    // Ensure correct initial visibility on load
-    menuToggle.style.display = window.innerWidth <= 768 ? 'block' : 'none'; 
-    closeMenu.style.display = 'none';
-});
+            // Ensure correct initial visibility on load
+            function updateMenuVisibility() {
+                if (window.innerWidth <= 768) {
+                    menuToggle.style.display = 'block';
+                    closeMenu.style.display = 'none';
+                } else {
+                    menuToggle.style.display = 'none';
+                    closeMenu.style.display = 'none';
+                }
+            }
+
+            updateMenuVisibility();
+            window.addEventListener('resize', updateMenuVisibility);
+        });
 </script>
 
     <?php wp_footer(); ?>
