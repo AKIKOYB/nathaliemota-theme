@@ -202,12 +202,20 @@ p {
     border: none;
     font-size: 40px;
     cursor: pointer;
+    display: none; /* Hidden by default */
+    z-index: 1002; /* Ensure above menu content */
     /*position: absolute;
     top: 1rem;
     right: 1rem;
     z-index: 1002;*/
 }
-
+/* Desktop Menu Visibility */
+@media (min-width: 769px) {
+    .mobile-menu, /* Hide mobile menu on larger screens */
+    .menu-toggle { /* Hide burger icon on larger screens */
+        display: none;
+    }
+}
 /* Responsive Styles */
 @media (max-width: 768px) {
     .desktop-menu {
@@ -217,7 +225,10 @@ p {
     .menu-toggle {
         display: block; /* Show burger icon on mobile */
     }
-
+    
+    .mobile-menu {
+        display: none; /* Hidden by default, only shows when toggled */
+    }
     .header {
         width: 100%;
         max-width: 100%; /* Ensure full width on mobile */

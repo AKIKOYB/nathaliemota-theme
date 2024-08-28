@@ -58,7 +58,6 @@ document.addEventListener('DOMContentLoaded', function() {
     var mobileMenu = document.querySelector('.mobile-menu');
     var closeMenu = document.querySelector('.close-menu');
 
-    // Function to toggle the mobile menu and button visibility
     function toggleMenu() {
         var isMenuOpen = mobileMenu.classList.toggle('open');
         menuToggle.style.display = isMenuOpen ? 'none' : 'block';
@@ -73,7 +72,7 @@ document.addEventListener('DOMContentLoaded', function() {
     closeMenu.addEventListener('click', toggleMenu);
     
     // Ensure correct initial visibility on load
-    menuToggle.style.display = 'block'; 
+    menuToggle.style.display = window.innerWidth <= 768 ? 'block' : 'none'; 
     closeMenu.style.display = 'none';
 });
 </script>
