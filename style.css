@@ -291,7 +291,7 @@ p {
         justify-content: center;
         text-align: center;
         margin-top: 80px;
-        margin-bottom: 50px;
+        /*margin-bottom: 50px;*/
     }
 
     .hero-content h1 {
@@ -310,7 +310,7 @@ p {
         justify-content: center;
         text-align: center;
         margin-top: 80px;
-        margin-bottom: 50px;
+        /*margin-bottom: 50px;*/
     }
 
     .hero-content h1 {
@@ -325,7 +325,8 @@ p {
 .filters {
     max-width: 100%;
     box-sizing: border-box;
-    margin-bottom: 50px;
+    margin-top: 70px;
+    margin-bottom: 30px;
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;
@@ -337,7 +338,7 @@ p {
     line-height: 18px;
     letter-spacing: 0.03em;
 }
-
+/*
 #filter-category,
 #filter-format,
 #filter-date {
@@ -345,29 +346,29 @@ p {
     max-width: 260px; 
     height: 44px;
     padding: 0px 18px;
-    padding-left: 30px; /* Add 30px left padding */
+    padding-left: 30px; 
     border-radius: 8px;
     border: 1.3px solid rgba(184, 187, 194, 1);
-    margin-bottom: 10px; 
+    argin-bottom: 10px; 
     background-color: white; 
-    display: flex; /* Use flexbox to center text */
+    display: flex;  Use flexbox to center text 
     align-items: center;
-    position: relative; /* Position relative for the pseudo-element */
-    appearance: none; /* Remove default select arrow in some browsers */
-    -moz-appearance: none; /* Remove default select arrow in Firefox */
-    -webkit-appearance: none; /* Remove default select arrow in WebKit browsers */
-}
-
+    position: relative; /* Position relative for the pseudo-element 
+    appearance: none; /* Remove default select arrow in some browsers 
+    -moz-appearance: none; /* Remove default select arrow in Firefox 
+    -webkit-appearance: none;  Remove default select arrow in WebKit browsers 
+}*/
+/*
 #filter-category::after,
 #filter-format::after,
 #filter-date::after {
-    content: '▼'; /* Arrow icon */
-    font-size: 12px; /* Adjust size as needed */
-    color: rgba(184, 187, 194, 1); /* Arrow color */
-    position: absolute; /* Position it absolutely to the right */
-    right: 20px; /* Distance from the right side */
-    pointer-events: none; /* Ensures the arrow doesn’t capture any click events */
-}
+    content: '▼'; /* Arrow icon 
+    font-size: 12px; /* Adjust size as needed 
+    color: rgba(184, 187, 194, 1); /* Arrow color 
+    position: absolute; /* Position it absolutely to the right 
+    right: 20px; /* Distance from the right side 
+    pointer-events: none; /* Ensures the arrow doesn’t capture any click events 
+}*/
 
 .select-hidden {
     display: none;
@@ -450,18 +451,24 @@ p {
 @media  (min-width: 651px) and (max-width: 925px) {
     .filters {
         justify-content: center;
+        margin-top: 30px;
+        margin-bottom: 26px;
     }
 }
 
 @media  (min-width: 376px) and (max-width: 650px) {
     .filters {
         justify-content: center;
+        margin-top: 30px;
+        margin-bottom: 26px;
     }
 }
 
 @media (max-width: 375px) {
     .filters {
         justify-content: center;
+        margin-top: 30px;
+        margin-bottom: 26px;
     }
 }
 
