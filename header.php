@@ -57,9 +57,11 @@
             var menuToggle = document.querySelector('.menu-toggle');
             var mobileMenu = document.querySelector('.mobile-menu');
             var closeMenu = document.querySelector('.close-menu');
+            var header = document.querySelector('.header'); // slide in doesnt work yet
 
             function toggleMenu() {
                 var isMenuOpen = mobileMenu.classList.toggle('open');
+                header.classList.toggle('open', isMenuOpen); // Toggle the open class for the header
                 menuToggle.style.display = isMenuOpen ? 'none' : 'block';
                 closeMenu.style.display = isMenuOpen ? 'block' : 'none';
                 menuToggle.setAttribute('aria-expanded', isMenuOpen);
