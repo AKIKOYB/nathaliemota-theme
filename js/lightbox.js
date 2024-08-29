@@ -28,7 +28,8 @@ jQuery(document).ready(function($) {
     // Open lightbox on full-screen icon click
     $(document).on('click', '.fullscreen-icon', function(e) {
         e.preventDefault();
-        var index = $(this).closest('.photo-block, .photo-item').index('.photo-block, .photo-item');
+        images = $('.fullscreen-icon'); // Refresh the images list to be sure it's up-to-date
+        var index = $(this).index('.fullscreen-icon'); // Use index within the images array
         openLightbox(index);
     });
 

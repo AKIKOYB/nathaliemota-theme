@@ -62,8 +62,8 @@ wp_reset_postdata();
 
     <select id="filter-date">
         <option value="desc">TRIER PAR</option>
-        <option value="desc">PLUS RÉCENTES</option>
-        <option value="asc">PLUS ANCIENNES</option>
+        <option value="desc">A partir des plus récentes</option>
+        <option value="asc">A partir des plus anciennes</option>
     </select>
 </div>
 
