@@ -31,7 +31,7 @@
                             <div class="photo-overlay">
                                 <div class="photo-icons">
                                     <a href="<?php the_permalink(); ?>" class="info-icon" title="Voir les détails">
-                                        <!-- Info icon (add an icon image or font icon here if needed) -->
+                                        <!-- Info icon -->
                                     </a>
                                     <a href="<?php echo esc_url(get_the_post_thumbnail_url(get_the_ID(), 'full')); ?>" 
                                        class="fullscreen-icon" 
@@ -46,7 +46,7 @@
                                         ?>
                                        " 
                                        title="Plein écran">
-                                        <!-- Fullscreen icon (add an icon image or font icon here if needed) -->
+                                        <!-- Fullscreen icon  -->
                                     </a>
                                 </div>
                                 <div class="photo-details">
