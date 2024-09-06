@@ -99,6 +99,43 @@ function load_more_photos_ajax() {
 add_action('wp_ajax_load_more_photos', 'load_more_photos_ajax');
 add_action('wp_ajax_nopriv_load_more_photos', 'load_more_photos_ajax');
 
+// AJAX handler to dynamically load categories and formats even after the changes
+function load_filters_terms() {
+    // Get categories
+    $categories = get_terms('categorie');
+    $formats = get_terms('format');
+    
+    $response = [
+        'categories' => [],
+        'formats' => []
+    ];
+
+    // Prepare categories
+    if (!empty($categories) && !is_wp_error($categories)) {
+        foreach ($categories as $category) {
+            $response['categories'][] = [
+                'slug' => $category->slug,
+                'name' => $category->name,
+            ];
+        }
+    }
+
+    // Prepare formats
+    if (!empty($formats) && !is_wp_error($formats)) {
+        foreach ($formats as $format) {
+            $response['formats'][] = [
+                'slug' => $format->slug,
+                'name' => $format->name,
+            ];
+        }
+    }
+
+    wp_send_json($response);
+}
+
+add_action('wp_ajax_load_filters_terms', 'load_filters_terms');
+add_action('wp_ajax_nopriv_load_filters_terms', 'load_filters_terms');
+
 // Function to loop through posts when at the last or first post
 function get_adjacent_post_link_loop($in_same_term = false, $excluded_terms = '', $previous = true, $taxonomy = 'category') {
     if ($previous && is_single()) {

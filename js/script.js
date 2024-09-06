@@ -29,6 +29,39 @@ jQuery(document).ready(function ($) {
             modal.fadeOut();
         }
     });
+    // Function to dynamically load categories and formats, automaticall adapts the changes
+    function updateFilters() {
+        $.ajax({
+            url: nathaliemota_ajax.ajax_url,  // Use the localized ajax URL passed from PHP
+            type: 'POST',
+            data: {
+                action: 'load_filters_terms'  // This must match the PHP action in functions.php
+            },
+            success: function(response) {
+                // Update the category select dropdown
+                let categorySelect = $('#filter-category');
+                categorySelect.empty();  // Clear existing options
+                categorySelect.append('<option value="">CATÉGORIES</option>');
+                response.categories.forEach(function(category) {
+                    categorySelect.append('<option value="' + category.slug + '">' + category.name + '</option>');
+                });
+
+                // Update the format select dropdown
+                let formatSelect = $('#filter-format');
+                formatSelect.empty();  // Clear existing options
+                formatSelect.append('<option value="">FORMATS</option>');
+                response.formats.forEach(function(format) {
+                    formatSelect.append('<option value="' + format.slug + '">' + format.name + '</option>');
+                });
+            },
+            error: function(error) {
+                console.log("AJAX error: ", error);
+            }
+        });
+    }
+
+    // Call the function to load filters on page load
+    updateFilters();
 
     function loadPhotos(page, append = true) {
         var category = $('#filter-category').val();
