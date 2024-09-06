@@ -52,6 +52,17 @@ function load_more_photos_ajax() {
     $format = isset($_POST['format']) ? sanitize_text_field($_POST['format']) : '';
     $order = isset($_POST['order']) ? sanitize_text_field($_POST['order']) : 'desc';
 
+    //with caching
+    $transient_key = 'photos_page_' . $page . '_cat_' . $category . '_fmt_' . $format . '_ord_' . $order;//creates a unique key for storing and retrieving cached data
+    $cached_response = get_transient($transient_key);//get_transient() is WordPress function fetches the cached data associated with the key
+
+    if ($cached_response !== false) {
+        // Return cached response
+        echo $cached_response; // If data is found, it outputs the cached response.
+        wp_die(); //the script execution immediately, to stop further processing after sending the cached response.
+    }
+
+
     $args = array(
         'post_type' => 'photo',
         'posts_per_page' => 8,
@@ -82,6 +93,7 @@ function load_more_photos_ajax() {
     $total_pages = ceil($total_photos / 8); // Calculate total number of pages
 
     $photo_query = new WP_Query($args);
+    ob_start(); // Start output buffering
 
     if ($photo_query->have_posts()) :
         while ($photo_query->have_posts()) : $photo_query->the_post();
@@ -93,6 +105,10 @@ function load_more_photos_ajax() {
     // Include total pages in the response
     echo '<div class="total-pages" data-total-pages="' . esc_attr($total_pages) . '"></div>';
 
+    $response = ob_get_clean(); // Get the buffered content
+    set_transient($transient_key, $response, 12 * HOUR_IN_SECONDS); // Cache for 12 hours
+
+    echo $response;
     wp_die();
 }
 
