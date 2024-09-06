@@ -32,7 +32,7 @@ function nathaliemota_enqueue_scripts() {
     
     // Localize script to pass AJAX URL
     wp_localize_script('nathaliemota-ajax', 'nathaliemota_ajax', array(
-        'ajax_url' => admin_url('admin-ajax.php')
+        'ajax_url' => admin_url('admin-ajax.php') //using admin_url('admin-ajax.php'), WordPress dynamically provides the correct URL, ensuring AJAX requests are routed correctly.
     ));
     
     // Enqueue the lightbox script
